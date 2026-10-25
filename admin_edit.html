@@ -1,0 +1,181 @@
+{% extends "base.html" %}
+
+{% block title %}Edit {{ item_type|capitalize }} - Admin Portal{% endblock %}
+
+{% block content %}
+<section class="section-wrapper" style="padding-top: 40px; padding-bottom: 60px;">
+  <div class="container" style="max-width: 800px;">
+    
+    <div style="margin-bottom: 20px;">
+      <a href="{{ url_for('admin') }}" class="btn btn-secondary" style="padding: 6px 16px; font-size: 0.88rem;">
+        &larr; Back to Admin Dashboard
+      </a>
+    </div>
+
+    <div class="admin-card">
+      <span class="section-pill">Edit Record</span>
+      <h1 style="font-size: 1.8rem; color: var(--green-deep); margin-bottom: 24px;">
+        Edit {{ item_type|capitalize }} #{{ item.id }}
+      </h1>
+
+      <!-- ===================================================================
+           EDIT ELEMENT
+           =================================================================== -->
+      {% if item_type == 'element' %}
+      <form method="POST" action="{{ url_for('admin_edit_element', element_id=item.id) }}">
+        <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 16px;">
+          <div class="form-group">
+            <label class="form-label">Element Name</label>
+            <input type="text" name="name" class="form-control" value="{{ item.name }}" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Category</label>
+            <select name="category" class="form-control" required>
+              {% for cat in ['Celestial Bodies', 'Flora & Sacred Plants', 'Fauna & Sacred Animals', 'Water Bodies', 'Earth & Landforms', 'Elemental Forces'] %}
+              <option value="{{ cat }}" {% if item.category == cat %}selected{% endif %}>{{ cat }}</option>
+              {% endfor %}
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Description / Significance</label>
+          <textarea name="description" class="form-control" rows="3" required>{{ item.description }}</textarea>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Image URL / Path</label>
+          <input type="text" name="image_url" class="form-control" value="{{ item.image_url }}" required>
+        </div>
+
+        <div style="display: flex; gap: 12px; margin-top: 24px;">
+          <button type="submit" class="btn btn-primary">Save Changes</button>
+          <a href="{{ url_for('admin') }}" class="btn btn-secondary">Cancel</a>
+        </div>
+      </form>
+
+      <!-- ===================================================================
+           EDIT BELIEF
+           =================================================================== -->
+      {% elif item_type == 'belief' %}
+      <form method="POST" action="{{ url_for('admin_edit_belief', belief_id=item.id) }}">
+        <div class="form-group">
+          <label class="form-label">Linked Element</label>
+          <select name="element_id" class="form-control" required>
+            {% for elem in elements %}
+            <option value="{{ elem.id }}" {% if item.element_id == elem.id %}selected{% endif %}>
+              {{ elem.name }} (#{{ elem.id }})
+            </option>
+            {% endfor %}
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">🪔 Sacred Tradition & Cultural Belief</label>
+          <textarea name="belief_text" class="form-control" rows="4" required>{{ item.belief_text }}</textarea>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">🔬 Scientific & Ecological Rationale</label>
+          <textarea name="science_text" class="form-control" rows="4" required>{{ item.science_text }}</textarea>
+        </div>
+
+        <div style="display: flex; gap: 12px; margin-top: 24px;">
+          <button type="submit" class="btn btn-primary">Save Changes</button>
+          <a href="{{ url_for('admin') }}" class="btn btn-secondary">Cancel</a>
+        </div>
+      </form>
+
+      <!-- ===================================================================
+           EDIT FESTIVAL
+           =================================================================== -->
+      {% elif item_type == 'festival' %}
+      <form method="POST" action="{{ url_for('admin_edit_festival', festival_id=item.id) }}">
+        <div style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 16px;">
+          <div class="form-group">
+            <label class="form-label">Festival Name</label>
+            <input type="text" name="name" class="form-control" value="{{ item.name }}" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Month</label>
+            <input type="text" name="month" class="form-control" value="{{ item.month }}" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Honored Element</label>
+            <select name="element_id" class="form-control">
+              <option value="">None / General</option>
+              {% for elem in elements %}
+              <option value="{{ elem.id }}" {% if item.element_id == elem.id %}selected{% endif %}>
+                {{ elem.name }}
+              </option>
+              {% endfor %}
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Celebration Context & Ecological Significance</label>
+          <textarea name="description" class="form-control" rows="3" required>{{ item.description }}</textarea>
+        </div>
+
+        <div style="display: flex; gap: 12px; margin-top: 24px;">
+          <button type="submit" class="btn btn-primary">Save Changes</button>
+          <a href="{{ url_for('admin') }}" class="btn btn-secondary">Cancel</a>
+        </div>
+      </form>
+
+      <!-- ===================================================================
+           EDIT QUIZ QUESTION
+           =================================================================== -->
+      {% elif item_type == 'quiz' %}
+      <form method="POST" action="{{ url_for('admin_edit_quiz', question_id=item.id) }}">
+        <div class="form-group">
+          <label class="form-label">Question</label>
+          <textarea name="question" class="form-control" rows="2" required>{{ item.question }}</textarea>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+          <div class="form-group">
+            <label class="form-label">Option A</label>
+            <input type="text" name="option_a" class="form-control" value="{{ item.option_a }}" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Option B</label>
+            <input type="text" name="option_b" class="form-control" value="{{ item.option_b }}" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Option C</label>
+            <input type="text" name="option_c" class="form-control" value="{{ item.option_c }}" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Option D</label>
+            <input type="text" name="option_d" class="form-control" value="{{ item.option_d }}" required>
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 140px 1fr; gap: 16px;">
+          <div class="form-group">
+            <label class="form-label">Correct Option</label>
+            <select name="correct_option" class="form-control" required>
+              {% for opt in ['A', 'B', 'C', 'D'] %}
+              <option value="{{ opt }}" {% if item.correct_option == opt %}selected{% endif %}>{{ opt }}</option>
+              {% endfor %}
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Scientific Explanation</label>
+            <textarea name="explanation" class="form-control" rows="2" required>{{ item.explanation }}</textarea>
+          </div>
+        </div>
+
+        <div style="display: flex; gap: 12px; margin-top: 24px;">
+          <button type="submit" class="btn btn-primary">Save Changes</button>
+          <a href="{{ url_for('admin') }}" class="btn btn-secondary">Cancel</a>
+        </div>
+      </form>
+      {% endif %}
+
+    </div>
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="100%" height="100%">
+  <defs>
+    <linearGradient id="cowBg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFFDE7"/>
+      <stop offset="100%" stop-color="#FFF9C4"/>
+    </linearGradient>
+    <linearGradient id="cowBody" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="60%" stop-color="#F5F5F5"/>
+      <stop offset="100%" stop-color="#E0E0E0"/>
+    </linearGradient>
+    <linearGradient id="saffronGarland" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#FF6F00"/>
+      <stop offset="50%" stop-color="#FFA000"/>
+      <stop offset="100%" stop-color="#FF6F00"/>
+    </linearGradient>
+  </defs>
+  <!-- Background -->
+  <rect width="400" height="300" fill="url(#cowBg)"/>
+
+  <!-- Golden Halo / Aura of Kamadhenu -->
+  <circle cx="160" cy="130" r="85" fill="#FFE082" opacity="0.5"/>
+
+  <!-- Pasture Ground -->
+  <path d="M0 240 Q150 230 400 245 L400 300 L0 300 Z" fill="#A5D6A7"/>
+  <path d="M0 260 Q200 250 400 265 L400 300 L0 300 Z" fill="#81C784"/>
+
+  <!-- Indigenous Desi Cow (Bos Indicus) Silhouette with Prominent Hump -->
+  <!-- Body -->
+  <path d="M120 160 Q170 145 230 155 Q290 165 310 180 Q325 210 315 250 L295 250 Q300 215 285 200 L245 200 L240 250 L220 250 L225 195 L170 195 L160 250 L140 250 L150 185 Q130 185 115 175 Z" fill="url(#cowBody)" stroke="#BDBDBD" stroke-width="1.5"/>
+
+  <!-- Prominent Thoracic Hump (Characteristic of Bos indicus) -->
+  <path d="M150 150 Q160 115 178 118 Q195 125 190 155 Z" fill="url(#cowBody)" stroke="#BDBDBD" stroke-width="1.5"/>
+
+  <!-- Head & Gentle Muzzle -->
+  <path d="M135 155 Q115 140 100 145 Q85 150 80 170 Q82 185 95 190 Q110 195 125 180 Z" fill="url(#cowBody)" stroke="#BDBDBD" stroke-width="1.5"/>
+  <!-- Dewlap (Soft folds of skin on neck) -->
+  <path d="M110 185 Q125 215 145 210 Q140 190 135 175" fill="none" stroke="#BDBDBD" stroke-width="2"/>
+
+  <!-- Graceful Lyre-Shaped Horns with Vermilion / Brass caps -->
+  <path d="M115 142 Q105 105 100 85 Q104 84 108 90 Q118 115 122 135 Z" fill="#5D4037"/>
+  <path d="M128 140 Q135 105 140 85 Q144 86 142 92 Q135 115 132 135 Z" fill="#5D4037"/>
+  <!-- Vermilion tip on horns -->
+  <polygon points="98,88 103,80 107,88" fill="#D32F2F"/>
+  <polygon points="138,88 142,80 146,88" fill="#D32F2F"/>
+
+  <!-- Large Gentle Eye -->
+  <ellipse cx="102" cy="160" rx="4" ry="3" fill="#3E2723"/>
+  <circle cx="101" cy="159" r="1" fill="#FFFFFF"/>
+
+  <!-- Drooping Long Ear -->
+  <path d="M125 155 Q135 175 125 185 Q120 175 122 155" fill="#EEEEEE" stroke="#BDBDBD" stroke-width="1.2"/>
+
+  <!-- Decorative Sacred Brass Bell & Marigold Garland around neck -->
+  <path d="M115 165 Q130 195 145 180" stroke="url(#saffronGarland)" stroke-width="6" fill="none" stroke-linecap="round"/>
+  <!-- Sacred Brass Bell -->
+  <path d="M130 193 L126 205 L138 205 L134 193 Z" fill="#FFC107" stroke="#FFA000" stroke-width="1"/>
+  <circle cx="132" cy="207" r="2" fill="#FF8F00"/>
+
+  <!-- Calf Silhouette playfully beside mother -->
+  <path d="M40 220 Q65 210 80 225 Q75 250 50 250 Z" fill="#F5F5F5" opacity="0.8"/>
+  <circle cx="48" cy="216" r="10" fill="#F5F5F5" opacity="0.8"/>
+
+  <!-- Auspicious Lotus below feet -->
+  <g transform="translate(180, 260) scale(0.6)">
+    <path d="M30 20 Q40 0 50 20 Q40 15 30 20 Z" fill="#F48FB1"/>
+    <path d="M20 22 Q35 8 45 22 Q32 18 20 22 Z" fill="#F06292"/>
+    <path d="M60 22 Q45 8 35 22 Q48 18 60 22 Z" fill="#F06292"/>
+  </g>
+</svg>

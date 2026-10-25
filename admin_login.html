@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block title %}Admin Login - Prakriti Explorer{% endblock %}
+
+{% block content %}
+<section class="section-wrapper" style="padding-top: 60px; padding-bottom: 80px;">
+  <div class="container" style="max-width: 480px;">
+    
+    <div class="admin-card" style="padding: 40px 32px; text-align: center;">
+      <!-- Lock Icon -->
+      <div style="width: 60px; height: 60px; border-radius: var(--radius-full); background: var(--green-light); color: var(--green-forest); display: flex; align-items: center; justify-content: center; font-size: 1.8rem; margin: 0 auto 18px;">
+        🔐
+      </div>
+
+      <h1 style="font-size: 1.8rem; color: var(--green-deep); margin-bottom: 8px;">
+        Admin Portal
+      </h1>
+      <p style="font-size: 0.92rem; color: var(--text-muted); margin-bottom: 24px;">
+        Enter the curator access password to manage elements, beliefs, festivals, and quiz questions.
+      </p>
+
+      <form method="POST" action="{{ url_for('admin_login') }}">
+        <div class="form-group" style="text-align: left;">
+          <label for="adminPassword" class="form-label">Admin Password</label>
+          <input 
+            type="password" 
+            id="adminPassword" 
+            name="password" 
+            class="form-control" 
+            placeholder="Enter password..."
+            required 
+            autofocus
+          >
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 10px; padding: 12px;">
+          Authenticate & Enter Dashboard &rarr;
+        </button>
+      </form>
+
+      <!-- Default Password Info Callout -->
+      <div style="background: var(--bg-cream); border: 1px dashed var(--border-strong); border-radius: var(--radius-sm); padding: 14px; margin-top: 24px; font-size: 0.85rem; color: var(--text-body); text-align: left;">
+        <strong style="color: var(--saffron-vibrant);">Default Access Key:</strong><br>
+        Password: <code style="background: #FFF; padding: 2px 6px; border-radius: 4px; border: 1px solid var(--border-subtle); font-weight: 700; color: var(--green-deep);">prakriti2026</code>
+      </div>
+
+      <div style="margin-top: 20px;">
+        <a href="{{ url_for('index') }}" style="font-size: 0.88rem; color: var(--text-muted);">
+          &larr; Return to Public Website
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+{% endblock %}

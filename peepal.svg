@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="100%" height="100%">
+  <defs>
+    <linearGradient id="peepalSky" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#E8F5E9"/>
+      <stop offset="100%" stop-color="#C8E6C9"/>
+    </linearGradient>
+    <linearGradient id="trunkGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#3E2723"/>
+      <stop offset="50%" stop-color="#5D4037"/>
+      <stop offset="100%" stop-color="#4E342E"/>
+    </linearGradient>
+    <linearGradient id="canopyGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#66BB6A"/>
+      <stop offset="50%" stop-color="#388E3C"/>
+      <stop offset="100%" stop-color="#1B5E20"/>
+    </linearGradient>
+  </defs>
+  <!-- Background -->
+  <rect width="400" height="300" fill="url(#peepalSky)"/>
+  
+  <!-- Sacred Platform / Chabutara around tree base -->
+  <polygon points="110,260 290,260 320,300 80,300" fill="#BCAAA4"/>
+  <polygon points="120,240 280,240 290,260 110,260" fill="#D7CCC8"/>
+  <!-- Sacred threads (Moli / Raksha Sutra) wrapped on trunk -->
+  
+  <!-- Massive Trunk & Spreading Roots -->
+  <path d="M165 240 Q180 180 175 120 Q195 140 200 110 Q205 140 225 120 Q220 180 235 240 Z" fill="url(#trunkGrad)"/>
+  <!-- Spreading Roots at Base -->
+  <path d="M165 240 Q150 250 135 260 L145 260 Q160 248 170 240 Z" fill="#3E2723"/>
+  <path d="M235 240 Q250 250 265 260 L255 260 Q240 248 230 240 Z" fill="#3E2723"/>
+  
+  <!-- Sacred Red & Yellow Threads -->
+  <line x1="172" y1="210" x2="228" y2="210" stroke="#D32F2F" stroke-width="3"/>
+  <line x1="171" y1="215" x2="229" y2="215" stroke="#FBC02D" stroke-width="2"/>
+  <line x1="173" y1="220" x2="227" y2="220" stroke="#D32F2F" stroke-width="2"/>
+
+  <!-- Spreading Upper Branches -->
+  <path d="M175 120 Q130 90 80 60" stroke="#4E342E" stroke-width="8" stroke-linecap="round"/>
+  <path d="M225 120 Q270 90 320 60" stroke="#4E342E" stroke-width="8" stroke-linecap="round"/>
+  <path d="M200 110 Q200 70 200 40" stroke="#4E342E" stroke-width="7" stroke-linecap="round"/>
+  <path d="M150 100 Q110 110 70 120" stroke="#4E342E" stroke-width="5" stroke-linecap="round"/>
+  <path d="M250 100 Q290 110 330 120" stroke="#4E342E" stroke-width="5" stroke-linecap="round"/>
+
+  <!-- Lush Canopy Silhouette Clusters -->
+  <ellipse cx="200" cy="55" rx="65" ry="40" fill="url(#canopyGrad)" opacity="0.9"/>
+  <ellipse cx="120" cy="80" rx="60" ry="40" fill="url(#canopyGrad)" opacity="0.9"/>
+  <ellipse cx="280" cy="80" rx="60" ry="40" fill="url(#canopyGrad)" opacity="0.9"/>
+  <ellipse cx="70" cy="115" rx="45" ry="35" fill="url(#canopyGrad)" opacity="0.85"/>
+  <ellipse cx="330" cy="115" rx="45" ry="35" fill="url(#canopyGrad)" opacity="0.85"/>
+  
+  <!-- Detailed Sacred Heart-Shaped Peepal Leaf Close-up in Foreground -->
+  <g transform="translate(290, 160) scale(0.65)">
+    <!-- Leaf Body with elongated tail tip -->
+    <path d="M50 0 C70 40 100 60 95 95 C90 125 65 140 50 140 C35 140 10 125 5 95 C0 60 30 40 50 0 Z" fill="#43A047" stroke="#1B5E20" stroke-width="3"/>
+    <!-- Elongated Tail (Drip Tip characteristic of Ficus religiosa) -->
+    <path d="M50 0 Q52 -20 48 -35" stroke="#1B5E20" stroke-width="3" fill="none"/>
+    <!-- Central Vein -->
+    <line x1="50" y1="0" x2="50" y2="135" stroke="#A5D6A7" stroke-width="3"/>
+    <path d="M50 40 Q70 45 80 55" stroke="#A5D6A7" stroke-width="2" fill="none"/>
+    <path d="M50 40 Q30 45 20 55" stroke="#A5D6A7" stroke-width="2" fill="none"/>
+    <path d="M50 70 Q75 75 88 88" stroke="#A5D6A7" stroke-width="2" fill="none"/>
+    <path d="M50 70 Q25 75 12 88" stroke="#A5D6A7" stroke-width="2" fill="none"/>
+  </g>
+</svg>

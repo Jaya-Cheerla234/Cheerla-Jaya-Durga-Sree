@@ -1,0 +1,137 @@
+{% extends "base.html" %}
+
+{% block title %}{{ element.name }} - Belief vs Science | Prakriti{% endblock %}
+
+{% block content %}
+<div class="container" style="padding-top: 36px; padding-bottom: 60px;">
+  
+  <!-- Breadcrumb & Back Navigation -->
+  <div style="margin-bottom: 24px; display: flex; align-items: center; justify-content: space-between;">
+    <a href="{{ url_for('browse') }}" class="btn btn-secondary" style="padding: 8px 18px; font-size: 0.88rem;">
+      &larr; Back to All Elements
+    </a>
+    <span class="card-category-badge" style="position: static; font-size: 0.82rem; padding: 6px 16px;">
+      {{ element.category }}
+    </span>
+  </div>
+
+  <!-- Element Overview Card -->
+  <div class="detail-header-card">
+    <div class="detail-image-box">
+      <img src="{{ element.image_url }}" alt="{{ element.name }}">
+    </div>
+    <div class="detail-info">
+      <span style="font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 700; color: var(--saffron-vibrant); margin-bottom: 8px;">
+        Nature Element #{{ element.id }}
+      </span>
+      <h1 class="detail-title">{{ element.name }}</h1>
+      <p class="detail-desc">{{ element.description }}</p>
+      
+      {% if festivals %}
+      <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+        <span style="font-size: 0.85rem; font-weight: 600; color: var(--text-muted);">Honored in Festivals:</span>
+        {% for fest in festivals %}
+        <a href="{{ url_for('festivals') }}#fest-{{ fest.id }}" class="meta-tag tag-festival" style="font-size: 0.85rem; padding: 4px 12px;">
+          🎉 {{ fest.name }} ({{ fest.month }})
+        </a>
+        {% endfor %}
+      </div>
+      {% endif %}
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       The "Belief vs Science" Side-by-Side Card
+       ========================================================================= -->
+  <div class="comparison-wrapper">
+    <div style="text-align: center; margin-bottom: 28px;">
+      <span class="section-pill">Dual Perspectives in Harmony</span>
+      <h2 style="font-size: 2rem; color: var(--green-deep); margin-bottom: 8px;">Tradition & Ecological Science</h2>
+      <p style="color: var(--text-muted); max-width: 650px; margin: 0 auto;">
+        Notice how traditional spiritual reverence and empirical ecological science describe the exact same 
+        life-sustaining phenomenon in complementary languages.
+      </p>
+    </div>
+
+    <div class="comparison-grid">
+      <!-- Cultural Belief Side -->
+      <div class="tradition-side">
+        <div class="card-header-badge">
+          <span>🪔 Sacred Tradition & Cultural Belief</span>
+        </div>
+        <h3 class="comparison-heading">Spiritual Reverence</h3>
+        <p class="comparison-text">
+          {{ element.belief_text or "Sacred tradition honors this element as an indispensable divine blessing, preserving communal harmony and cultural reverence across generations." }}
+        </p>
+      </div>
+
+      <!-- Scientific & Ecological Side -->
+      <div class="science-side">
+        <div class="card-header-badge">
+          <span>🔬 Ecological & Scientific Rationale</span>
+        </div>
+        <h3 class="comparison-heading">Empirical Science</h3>
+        <p class="comparison-text">
+          {{ element.science_text or "Modern ecology, microbiology, and environmental sciences confirm the vital role this element plays in ecosystem stability, biodiversity, and human public health." }}
+        </p>
+      </div>
+    </div>
+
+    <!-- Synthesis Takeaway Card -->
+    <div class="synthesis-card">
+      <div class="synthesis-icon">🌱</div>
+      <div>
+        <h4 class="synthesis-title">Ancient Ecological Foresight</h4>
+        <p class="synthesis-body">
+          By encoding environmental conservation into the language of sacred duty (Dharma) and family rituals, 
+          ancient Indian communities ensured that vital keystone species, river watersheds, and celestial cycles 
+          were guarded against short-term exploitation by generations to come.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Linked Festivals Showcase -->
+  {% if festivals %}
+  <div class="linked-festivals-wrapper">
+    <h3 style="font-size: 1.4rem; color: var(--green-deep); margin-bottom: 16px; display: flex; align-items: center; gap: 8px;">
+      <span>🎉</span> Festivals Honoring {{ element.name }}
+    </h3>
+    
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+      {% for fest in festivals %}
+      <div style="background: var(--bg-cream); border-radius: var(--radius-sm); border: 1px solid var(--border-subtle); padding: 20px;">
+        <span class="festival-month-badge">{{ fest.month }}</span>
+        <h4 style="font-size: 1.2rem; color: var(--green-deep); margin-bottom: 8px;">{{ fest.name }}</h4>
+        <p style="font-size: 0.92rem; color: var(--text-body); line-height: 1.6;">{{ fest.description }}</p>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+  {% endif %}
+
+  <!-- Bottom Navigation: Prev / Next Element -->
+  <div class="detail-nav-bar">
+    {% if prev_id %}
+    <a href="{{ url_for('element_detail', element_id=prev_id) }}" class="btn btn-secondary">
+      &larr; Previous Element
+    </a>
+    {% else %}
+    <div></div>
+    {% endif %}
+
+    <a href="{{ url_for('browse') }}" class="btn btn-secondary">
+      All Elements Grid
+    </a>
+
+    {% if next_id %}
+    <a href="{{ url_for('element_detail', element_id=next_id) }}" class="btn btn-primary">
+      Next Element &rarr;
+    </a>
+    {% else %}
+    <div></div>
+    {% endif %}
+  </div>
+
+</div>
+{% endblock %}

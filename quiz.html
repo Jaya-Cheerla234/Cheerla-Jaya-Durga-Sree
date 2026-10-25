@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+
+{% block title %}Superstition or Science? Quiz - Prakriti Explorer{% endblock %}
+
+{% block content %}
+<section class="section-wrapper" style="padding-top: 40px;">
+  <div class="container quiz-container" id="quizAppWrapper">
+
+    <!-- Page Header -->
+    <div class="section-header" style="margin-bottom: 24px;">
+      <span class="section-pill">Interactive Knowledge Challenge</span>
+      <h1 class="section-title">Superstition or Science?</h1>
+      <p class="section-desc">
+        Test your understanding of the real ecological, botanical, and microbiological reasons behind India's sacred nature traditions.
+      </p>
+    </div>
+
+    <!-- Progress Bar -->
+    <div class="quiz-progress-bar">
+      <div id="quizProgressFill" class="quiz-progress-fill"></div>
+    </div>
+
+    <!-- Active Question Card -->
+    <div id="mainQuizCard" class="quiz-card">
+      <div class="quiz-meta">
+        <span id="questionNumberLabel">Question 1 of 10</span>
+        <span id="currentScoreBadge" class="meta-tag tag-tradition" style="font-size: 0.85rem; font-weight: 700;">Score: 0</span>
+      </div>
+
+      <h2 id="questionPromptText" class="question-text">
+        Loading question...
+      </h2>
+
+      <!-- Options Container (populated dynamically) -->
+      <div id="quizOptionsContainer" class="quiz-options"></div>
+
+      <!-- Explanation Box (revealed on selection) -->
+      <div id="explanationContainer" class="explanation-box">
+        <div id="explanationTitle" class="explanation-heading">
+          🌿 Traditional Wisdom & Ecological Science
+        </div>
+        <div id="explanationBodyText" class="explanation-text"></div>
+      </div>
+
+      <!-- Next Button -->
+      <div style="text-align: right;">
+        <button type="button" id="nextQuestionBtn" class="btn btn-primary" style="display: none;">
+          Next Question &rarr;
+        </button>
+      </div>
+    </div>
+
+    <!-- Final Score Results Card (initially hidden) -->
+    <div id="quizResultsCard" class="quiz-card score-card" style="display: none;">
+      <div class="score-badge-circle">
+        <div id="finalScoreNumber" class="score-number">0</div>
+        <div class="score-total">out of 10</div>
+      </div>
+
+      <h2 id="finalBadgeTitle" class="score-message">
+        Prakriti Acharya
+      </h2>
+
+      <p id="finalFeedbackText" class="score-feedback">
+        Reviewing your performance...
+      </p>
+
+      <div style="display: flex; justify-content: center; gap: 16px; margin-bottom: 36px; flex-wrap: wrap;">
+        <button type="button" id="retakeQuizBtn" class="btn btn-primary">
+          ↺ Retake Challenge
+        </button>
+        <a href="{{ url_for('browse') }}" class="btn btn-secondary">
+          Explore All Elements &rarr;
+        </a>
+      </div>
+
+      <!-- Question Breakdown & Review List -->
+      <div style="text-align: left; border-top: 1px solid var(--border-subtle); padding-top: 28px;">
+        <h3 style="font-size: 1.3rem; color: var(--green-deep); margin-bottom: 16px;">
+          Question Review & Ecological Insights
+        </h3>
+        <div id="quizReviewList"></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Embedded Quiz Questions JSON from SQLite Database -->
+<script id="quizDataJson" type="application/json">
+  {{ questions_json | safe }}
+</script>
+{% endblock %}
+
+{% block extra_scripts %}
+<script src="{{ url_for('static', filename='js/quiz.js') }}"></script>
+{% endblock %}

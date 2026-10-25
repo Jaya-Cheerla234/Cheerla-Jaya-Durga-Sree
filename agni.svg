@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="100%" height="100%">
+  <defs>
+    <linearGradient id="agniBg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#212121"/>
+      <stop offset="60%" stop-color="#3E2723"/>
+      <stop offset="100%" stop-color="#4E342E"/>
+    </linearGradient>
+    <radialGradient id="fireGlow" cx="50%" cy="60%" r="50%">
+      <stop offset="0%" stop-color="#FF6F00" stop-opacity="0.9"/>
+      <stop offset="40%" stop-color="#E65100" stop-opacity="0.6"/>
+      <stop offset="80%" stop-color="#BF360C" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="flameOuter" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#D84315"/>
+      <stop offset="60%" stop-color="#FF5722"/>
+      <stop offset="100%" stop-color="#FF8A65"/>
+    </linearGradient>
+    <linearGradient id="flameCore" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#FF8F00"/>
+      <stop offset="50%" stop-color="#FFC107"/>
+      <stop offset="100%" stop-color="#FFF9C4"/>
+    </linearGradient>
+    <linearGradient id="kundaGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#8D6E63"/>
+      <stop offset="50%" stop-color="#BCAAA4"/>
+      <stop offset="100%" stop-color="#795548"/>
+    </linearGradient>
+  </defs>
+  <!-- Background: Auspicious Night / Courtyard -->
+  <rect width="400" height="300" fill="url(#agniBg)"/>
+
+  <!-- Ambient Radiant Fire Glow -->
+  <circle cx="200" cy="150" r="130" fill="url(#fireGlow)"/>
+
+  <!-- Sacred Vedic Havan Kunda (Stepped Terracotta Fire Altar) -->
+  <!-- Base Tier -->
+  <polygon points="70,290 330,290 350,300 50,300" fill="#4E342E"/>
+  <polygon points="90,270 310,270 325,290 75,290" fill="url(#kundaGrad)"/>
+  <!-- Middle Tier -->
+  <polygon points="110,250 290,250 305,270 95,270" fill="#A1887F"/>
+  <!-- Top Rim of Kunda -->
+  <polygon points="130,230 270,230 285,250 115,250" fill="url(#kundaGrad)"/>
+  <!-- Interior Cavity of Kunda with Glowing Embers -->
+  <polygon points="140,232 260,232 245,245 155,245" fill="#BF360C"/>
+  <ellipse cx="200" cy="238" rx="45" ry="6" fill="#FF3D00"/>
+
+  <!-- Aromatic Sacred Wood Logs (Samidha) Crisscrossed -->
+  <polygon points="150,235 250,225 255,230 155,240" fill="#3E2723"/>
+  <polygon points="150,225 250,235 245,240 145,230" fill="#4E342E"/>
+
+  <!-- Dynamic Sacred Flames of Agni -->
+  <!-- Outer Large Tongues of Flame (Sapta Jihva) -->
+  <path d="M150 230 C130 180 150 140 165 110 C160 130 170 145 180 130 C175 100 190 70 200 40 C210 70 225 100 220 130 C230 145 240 130 235 110 C250 140 270 180 250 230 Z" fill="url(#flameOuter)"/>
+
+  <!-- Middle Intense Orange Flame -->
+  <path d="M165 230 C150 190 165 160 175 130 C170 150 185 160 190 145 C190 120 198 90 200 65 C202 90 210 120 210 145 C215 160 230 150 225 130 C235 160 250 190 235 230 Z" fill="#FF6D00"/>
+
+  <!-- Inner Radiant Golden White Core (Pavamana) -->
+  <path d="M178 230 C170 200 180 175 190 155 C192 170 200 165 200 150 C200 130 200 100 200 90 C200 100 200 130 200 150 C200 165 208 170 210 155 C220 175 230 200 222 230 Z" fill="url(#flameCore)"/>
+
+  <!-- Rising Sparks and Medicinal Herbal Aerosols (Hawan micro-particles) -->
+  <circle cx="195" cy="30" r="2" fill="#FFF9C4"/>
+  <circle cx="208" cy="20" r="1.5" fill="#FFE082"/>
+  <circle cx="170" cy="50" r="2" fill="#FFCA28"/>
+  <circle cx="230" cy="55" r="1.5" fill="#FFCA28"/>
+  <circle cx="155" cy="80" r="2" fill="#FFA726"/>
+  <circle cx="245" cy="75" r="2.5" fill="#FFA726"/>
+  <circle cx="180" cy="15" r="1" fill="#FFFFFF"/>
+</svg>

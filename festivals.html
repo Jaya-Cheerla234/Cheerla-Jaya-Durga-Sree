@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block title %}Nature Festivals of India - Prakriti Explorer{% endblock %}
+
+{% block content %}
+<section class="section-wrapper" style="padding-top: 40px;">
+  <div class="container">
+
+    <!-- Page Header -->
+    <div class="section-header">
+      <span class="section-pill">Sacred Calendar</span>
+      <h1 class="section-title">Festivals Honoring Nature</h1>
+      <p class="section-desc">
+        In the traditional Indian calendar, festivals mark astronomical transits, monsoon cycles, and agricultural harvests. 
+        Each festival is an occasion of communal thanksgiving to the natural elements that sustain life.
+      </p>
+    </div>
+
+    <!-- Festivals Grid -->
+    <div class="festivals-grid">
+      {% for fest in festivals %}
+      <article id="fest-{{ fest.id }}" class="festival-card">
+        <span class="festival-month-badge">
+          📅 {{ fest.month }}
+        </span>
+        
+        <h2 class="festival-name">{{ fest.name }}</h2>
+
+        {% if fest.element_name %}
+        <a href="{{ url_for('element_detail', element_id=fest.element_id) }}" class="honors-element-pill" title="Click to view Belief vs Science for {{ fest.element_name }}">
+          <span>🌿 Honoring:</span>
+          <strong>{{ fest.element_name }}</strong>
+          <span>&rarr;</span>
+        </a>
+        {% endif %}
+
+        <p class="festival-desc">{{ fest.description }}</p>
+
+        <div style="margin-top: 20px; padding-top: 14px; border-top: 1px solid var(--border-subtle); display: flex; justify-content: space-between; align-items: center;">
+          <span style="font-size: 0.8rem; color: var(--text-muted);">Festival #{{ fest.id }}</span>
+          {% if fest.element_id %}
+          <a href="{{ url_for('element_detail', element_id=fest.element_id) }}" class="card-link-btn" style="font-size: 0.85rem;">
+            Explore {{ fest.element_name }} &rarr;
+          </a>
+          {% endif %}
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+
+    <!-- Bottom Callout -->
+    <div style="margin-top: 48px; background: #FFF; border-radius: var(--radius-lg); border: 1px solid var(--border-subtle); padding: 32px; text-align: center; box-shadow: var(--shadow-sm);">
+      <h3 style="color: var(--green-deep); margin-bottom: 10px;">Want to test your knowledge of these festivals?</h3>
+      <p style="color: var(--text-muted); max-width: 600px; margin: 0 auto 20px;">
+        Discover the scientific reasons behind fasting on Sharad Purnima, leaving fields untilled during Raja Parba, 
+        and worshiping snakes during Nag Panchami.
+      </p>
+      <a href="{{ url_for('quiz') }}" class="btn btn-primary">
+        Take the "Superstition or Science?" Quiz &rarr;
+      </a>
+    </div>
+
+  </div>
+</section>
+{% endblock %}

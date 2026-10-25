@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="100%" height="100%">
+  <defs>
+    <linearGradient id="neemBg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#E8F8F5"/>
+      <stop offset="100%" stop-color="#D1F2EB"/>
+    </linearGradient>
+    <linearGradient id="neemLeaf" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#48C774"/>
+      <stop offset="50%" stop-color="#1E824C"/>
+      <stop offset="100%" stop-color="#145A32"/>
+    </linearGradient>
+    <linearGradient id="woodBranch" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#566573"/>
+      <stop offset="100%" stop-color="#2C3E50"/>
+    </linearGradient>
+  </defs>
+  <!-- Background -->
+  <rect width="400" height="300" fill="url(#neemBg)"/>
+
+  <!-- Halo of Healing / Goddess Shitala Blessing -->
+  <circle cx="200" cy="140" r="100" fill="#E8F8F5" opacity="0.9"/>
+  <circle cx="200" cy="140" r="85" fill="#D4EFDF" opacity="0.5"/>
+
+  <!-- Main Arching Medicinal Neem Branch (Azadirachta indica) -->
+  <path d="M50 250 Q120 180 200 130 Q280 80 350 50" stroke="url(#woodBranch)" stroke-width="6" fill="none" stroke-linecap="round"/>
+  
+  <!-- Secondary Twigs -->
+  <path d="M140 165 Q110 130 90 90" stroke="url(#woodBranch)" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+  <path d="M240 105 Q280 140 310 170" stroke="url(#woodBranch)" stroke-width="3" fill="none" stroke-linecap="round"/>
+
+  <!-- Characteristic Asymmetric, Curved, Serrated Pinnate Neem Leaflets -->
+  <!-- Main Stem Leaf Pairs -->
+  <!-- Pair 1 -->
+  <path d="M170 145 Q150 115 130 110 Q145 135 170 145 Z" fill="url(#neemLeaf)"/>
+  <path d="M175 150 Q185 180 175 205 Q170 175 175 150 Z" fill="url(#neemLeaf)"/>
+  <!-- Pair 2 -->
+  <path d="M210 125 Q205 95 190 75 Q210 100 210 125 Z" fill="url(#neemLeaf)"/>
+  <path d="M215 130 Q240 155 245 180 Q225 150 215 130 Z" fill="url(#neemLeaf)"/>
+  <!-- Pair 3 -->
+  <path d="M255 100 Q260 70 250 50 Q265 75 255 100 Z" fill="url(#neemLeaf)"/>
+  <path d="M260 105 Q290 120 305 140 Q280 120 260 105 Z" fill="url(#neemLeaf)"/>
+  <!-- Terminal Leaflet -->
+  <path d="M350 50 Q380 40 395 30 Q370 45 350 50 Z" fill="url(#neemLeaf)"/>
+
+  <!-- Branch 2 Leaflets (Left side) -->
+  <path d="M120 140 Q95 130 75 130 Q105 145 120 140 Z" fill="url(#neemLeaf)"/>
+  <path d="M100 110 Q70 105 55 95 Q85 115 100 110 Z" fill="url(#neemLeaf)"/>
+  <path d="M90 90 Q75 65 70 45 Q88 70 90 90 Z" fill="url(#neemLeaf)"/>
+
+  <!-- Branch 3 Leaflets (Right side) -->
+  <path d="M270 130 Q295 140 320 155 Q295 145 270 130 Z" fill="url(#neemLeaf)"/>
+  <path d="M290 150 Q315 170 335 190 Q310 170 290 150 Z" fill="url(#neemLeaf)"/>
+  <path d="M310 170 Q340 185 360 210 Q330 185 310 170 Z" fill="url(#neemLeaf)"/>
+
+  <!-- White Star-Shaped Fragrant Neem Blossoms -->
+  <g fill="#FFFFFF" stroke="#C8E6C9" stroke-width="0.8">
+    <circle cx="160" cy="130" r="3"/>
+    <circle cx="166" cy="125" r="2.5"/>
+    <circle cx="155" cy="122" r="2.5"/>
+    <circle cx="225" cy="115" r="3"/>
+    <circle cx="232" cy="110" r="2.5"/>
+    <circle cx="275" cy="85" r="3"/>
+    <circle cx="282" cy="80" r="2.5"/>
+  </g>
+  <!-- Yellow flower centers -->
+  <circle cx="160" cy="130" r="1" fill="#F4D03F"/>
+  <circle cx="166" cy="125" r="0.8" fill="#F4D03F"/>
+  <circle cx="155" cy="122" r="0.8" fill="#F4D03F"/>
+  <circle cx="225" cy="115" r="1" fill="#F4D03F"/>
+  <circle cx="275" cy="85" r="1" fill="#F4D03F"/>
+
+  <!-- Traditional Ugadi / Gudi Padwa Neem & Jaggery Offering Plate -->
+  <g transform="translate(40, 180)">
+    <!-- Brass Thali -->
+    <ellipse cx="60" cy="70" rx="45" ry="16" fill="#F4D03F" stroke="#D4AC0D" stroke-width="2"/>
+    <ellipse cx="60" cy="68" rx="40" ry="13" fill="#FCF3CF"/>
+    <!-- Golden Jaggery Cubes (Gud) -->
+    <rect x="40" y="58" width="14" height="12" rx="2" fill="#BA4A00"/>
+    <rect x="52" y="60" width="12" height="10" rx="2" fill="#D35400"/>
+    <!-- Fresh Green Neem Leaves on thali -->
+    <path d="M68 62 Q78 55 88 60 Q78 68 68 62 Z" fill="#27AE60"/>
+    <path d="M72 66 Q82 68 90 75 Q78 76 72 66 Z" fill="#2ECC71"/>
+  </g>
+</svg>

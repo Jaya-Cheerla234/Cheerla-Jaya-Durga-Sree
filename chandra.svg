@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="100%" height="100%">
+  <defs>
+    <linearGradient id="chandraSky" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0D1B2A"/>
+      <stop offset="60%" stop-color="#1B263B"/>
+      <stop offset="100%" stop-color="#415A77"/>
+    </linearGradient>
+    <radialGradient id="moonAura" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#E0E1DD"/>
+      <stop offset="40%" stop-color="#E0E1DD" stop-opacity="0.8"/>
+      <stop offset="80%" stop-color="#778DA9" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#1B263B" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="silverMoon" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="70%" stop-color="#F5F5F5"/>
+      <stop offset="100%" stop-color="#E0E0E0"/>
+    </linearGradient>
+    <linearGradient id="seaNight" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#415A77"/>
+      <stop offset="40%" stop-color="#1B263B"/>
+      <stop offset="100%" stop-color="#0D1B2A"/>
+    </linearGradient>
+  </defs>
+  <!-- Night Sky -->
+  <rect width="400" height="300" fill="url(#chandraSky)"/>
+
+  <!-- Twinkling Constellations & Stars (Nakshatras) -->
+  <g fill="#FFFFFF" opacity="0.8">
+    <circle cx="50" cy="40" r="1.5"/>
+    <circle cx="90" cy="70" r="1"/>
+    <circle cx="130" cy="35" r="2"/>
+    <circle cx="80" cy="110" r="1.5"/>
+    <circle cx="280" cy="45" r="2"/>
+    <circle cx="330" cy="80" r="1.5"/>
+    <circle cx="370" cy="30" r="1"/>
+    <circle cx="350" cy="120" r="1.8"/>
+    <circle cx="40" cy="160" r="1.2"/>
+    <circle cx="360" cy="170" r="1.2"/>
+  </g>
+
+  <!-- Luminous Halo of Sharad Purnima Moon -->
+  <circle cx="200" cy="110" r="95" fill="url(#moonAura)"/>
+  
+  <!-- Full Moon Sphere -->
+  <circle cx="200" cy="110" r="55" fill="url(#silverMoon)"/>
+
+  <!-- Subtle Lunar Seas (Mare Tranquillitatis / Traditional Hare motif - Shashanka) -->
+  <path d="M185 85 Q195 80 205 88 Q215 95 200 105 Q180 100 185 85 Z" fill="#BDBDBD" opacity="0.35"/>
+  <path d="M210 110 Q230 115 225 130 Q215 140 200 135 Q205 120 210 110 Z" fill="#BDBDBD" opacity="0.3"/>
+  <circle cx="175" cy="120" r="10" fill="#BDBDBD" opacity="0.25"/>
+
+  <!-- Crescent Overlay Line (symbolizing Shiva's Chandrama crest) -->
+  <path d="M175 65 C150 90 150 130 175 155 C160 135 160 85 175 65 Z" fill="#E0F7FA" opacity="0.6"/>
+
+  <!-- Nocturnal Ocean Waters responding to Gravitational Tides -->
+  <path d="M0 215 Q100 205 200 215 T400 215 L400 300 L0 300 Z" fill="url(#seaNight)"/>
+
+  <!-- Silver Lunar Reflection Path on Waters -->
+  <ellipse cx="200" cy="225" rx="35" ry="3" fill="#E0E1DD" opacity="0.7"/>
+  <ellipse cx="200" cy="235" rx="55" ry="3" fill="#FFFFFF" opacity="0.6"/>
+  <ellipse cx="200" cy="245" rx="40" ry="2.5" fill="#E0E1DD" opacity="0.5"/>
+  <ellipse cx="200" cy="255" rx="70" ry="2.5" fill="#FFFFFF" opacity="0.4"/>
+  <ellipse cx="200" cy="270" rx="90" ry="2" fill="#E0E1DD" opacity="0.3"/>
+
+  <!-- Traditional Silver Bowl of Kheer placed under Moonlight for Amrit -->
+  <ellipse cx="80" cy="265" rx="28" ry="10" fill="#E0E0E0" stroke="#B0BEC5" stroke-width="1.5"/>
+  <ellipse cx="80" cy="262" rx="24" ry="7" fill="#FFFDE7"/>
+  <!-- Silver spoon -->
+  <line x1="90" y1="260" x2="108" y2="245" stroke="#CFD8DC" stroke-width="2.5" stroke-linecap="round"/>
+</svg>

@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="100%" height="100%">
+  <defs>
+    <linearGradient id="govSky" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#37474F"/>
+      <stop offset="40%" stop-color="#546E7A"/>
+      <stop offset="100%" stop-color="#90A4AE"/>
+    </linearGradient>
+    <linearGradient id="hillBack" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#2E7D32"/>
+      <stop offset="100%" stop-color="#1B5E20"/>
+    </linearGradient>
+    <linearGradient id="hillFore" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#558B2F"/>
+      <stop offset="100%" stop-color="#33691E"/>
+    </linearGradient>
+    <linearGradient id="krishnaAura" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FFE082" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#FFB300" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <!-- Stormy Monsoon Sky (Overcoming Indra's Deluge) -->
+  <rect width="400" height="300" fill="url(#govSky)"/>
+
+  <!-- Storm Clouds in Upper Sky -->
+  <path d="M-20 60 Q20 20 70 40 Q120 10 180 35 Q230 15 280 40 Q340 20 420 50 L420 0 L-20 0 Z" fill="#263238" opacity="0.75"/>
+  <path d="M30 80 Q80 50 140 70 Q200 45 260 70 Q320 55 380 75 L400 0 L0 0 Z" fill="#37474F" opacity="0.6"/>
+
+  <!-- Sacred Lifted Govardhan Hill Canopy -->
+  <!-- Mountain Mass held aloft like an umbrella -->
+  <path d="M40 160 Q80 110 140 100 Q200 80 260 100 Q320 115 360 160 Q320 170 200 170 Q80 170 40 160 Z" fill="url(#hillBack)"/>
+  <!-- Mountain Vegetation & Rock Stratification -->
+  <path d="M60 155 Q120 105 200 95 Q280 105 340 155 Q200 165 60 155 Z" fill="url(#hillFore)"/>
+  
+  <!-- Trees dotting the mountain ridge -->
+  <circle cx="120" cy="115" r="9" fill="#1B5E20"/>
+  <circle cx="160" cy="100" r="11" fill="#2E7D32"/>
+  <circle cx="210" cy="95" r="12" fill="#1B5E20"/>
+  <circle cx="250" cy="102" r="10" fill="#33691E"/>
+  <circle cx="290" cy="118" r="8" fill="#2E7D32"/>
+
+  <!-- Monsoon Rain Sheen pouring outside the mountain perimeter -->
+  <g stroke="#90CAF9" stroke-width="1.5" stroke-dasharray="8 6" opacity="0.6">
+    <line x1="10" y1="90" x2="0" y2="280"/>
+    <line x1="25" y1="110" x2="15" y2="290"/>
+    <line x1="375" y1="110" x2="385" y2="290"/>
+    <line x1="390" y1="90" x2="400" y2="280"/>
+  </g>
+
+  <!-- Golden Protective Space underneath the sacred mountain -->
+  <!-- Divine Hand of Giridhari (Krishna lifting with left little finger) -->
+  <path d="M200 230 L200 165" stroke="#1565C0" stroke-width="8" stroke-linecap="round"/>
+  <!-- Peacock Feather (Mor Pankh) Crown Motif -->
+  <g transform="translate(195, 230)">
+    <!-- Aura -->
+    <circle cx="5" cy="10" r="30" fill="#FFE082" opacity="0.5"/>
+    <!-- Krishna Silhouette Crown -->
+    <path d="M-5 15 C-5 5 15 5 15 15 Z" fill="#1565C0"/>
+    <!-- Peacock Feather -->
+    <ellipse cx="5" cy="-2" rx="7" ry="12" fill="#00897B"/>
+    <ellipse cx="5" cy="-2" rx="4" ry="7" fill="#1E88E5"/>
+    <circle cx="5" cy="-2" r="2" fill="#FFB300"/>
+  </g>
+
+  <!-- Flute (Bansuri) Silhouette -->
+  <line x1="170" y1="260" x2="235" y2="245" stroke="#FFE082" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- Protected Pasture Ground with peaceful cattle silhouette below -->
+  <rect x="0" y="270" width="400" height="30" fill="#4E342E"/>
+  <!-- Peaceful Cow Silhouette Sheltered -->
+  <ellipse cx="120" cy="270" rx="25" ry="12" fill="#ECEFF1"/>
+  <circle cx="100" cy="264" r="8" fill="#ECEFF1"/>
+  <!-- Calves and Braj folk -->
+  <ellipse cx="280" cy="270" rx="25" ry="12" fill="#ECEFF1"/>
+  <circle cx="300" cy="264" r="8" fill="#ECEFF1"/>
+</svg>

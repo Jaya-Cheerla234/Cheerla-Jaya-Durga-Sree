@@ -1,0 +1,1356 @@
+/* ==========================================================================
+   Prakriti: Nature & Belief Explorer - Master Stylesheet
+   Theme: Earthy Green, Saffron & Warm Cream
+   ========================================================================== */
+
+/* --- Google Fonts Import --- */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Rozha+One&display=swap');
+
+/* --- Root Theme Variables --- */
+:root {
+  /* Cream Background Tones */
+  --bg-cream: #FAF6EF;
+  --bg-parchment: #F4ECE0;
+  --bg-card: #FFFFFF;
+  --bg-card-subtle: #F9F5EC;
+  
+  /* Earthy Greens */
+  --green-deep: #1E3F1A;
+  --green-forest: #2D5A27;
+  --green-sage: #4A7A42;
+  --green-light: #EBF4E9;
+  --green-tint: #D6E8D1;
+
+  /* Saffron & Terracotta Accents */
+  --saffron-vibrant: #D95F1A;
+  --saffron-warm: #E2722C;
+  --saffron-light: #FDF1E8;
+  --terracotta: #A8441D;
+  --gold-sacred: #C58B24;
+
+  /* Neutrals & Text */
+  --text-dark: #221E1A;
+  --text-body: #443E38;
+  --text-muted: #787067;
+  --border-subtle: #E6DCD1;
+  --border-strong: #D5C7B8;
+
+  /* Shadows */
+  --shadow-sm: 0 2px 6px rgba(34, 30, 26, 0.05);
+  --shadow-md: 0 6px 18px rgba(34, 30, 26, 0.08);
+  --shadow-lg: 0 14px 34px rgba(34, 30, 26, 0.11);
+  --shadow-hover: 0 18px 40px rgba(45, 90, 39, 0.13);
+
+  /* Radius */
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-full: 9999px;
+
+  /* Transitions */
+  --transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* --- Global Reset & Base Styles --- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background-color: var(--bg-cream);
+  color: var(--text-body);
+  line-height: 1.65;
+  font-size: 16px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Headings with Classical Indian Serif Typography */
+h1, h2, h3, h4, .brand-title {
+  font-family: 'Cinzel', Georgia, serif;
+  color: var(--text-dark);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+a {
+  color: var(--saffron-vibrant);
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+a:hover {
+  color: var(--terracotta);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ==========================================================================
+   Navigation Bar
+   ========================================================================== */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(250, 246, 239, 0.94);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border-subtle);
+  transition: var(--transition);
+}
+
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 76px;
+}
+
+.brand-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+}
+
+.brand-logo {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-sm);
+  background: #FFF;
+  padding: 4px;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border-subtle);
+}
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.brand-title {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--green-deep);
+  line-height: 1.1;
+  letter-spacing: 0.04em;
+}
+
+.brand-tagline {
+  font-size: 0.72rem;
+  color: var(--saffron-vibrant);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.nav-menu {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  list-style: none;
+}
+
+.nav-link {
+  font-size: 0.94rem;
+  font-weight: 500;
+  color: var(--text-dark);
+  padding: 8px 12px;
+  border-radius: var(--radius-sm);
+  position: relative;
+  transition: var(--transition);
+}
+
+.nav-link:hover, .nav-link.active {
+  color: var(--saffron-vibrant);
+}
+
+.nav-link.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 12px;
+  right: 12px;
+  height: 2px;
+  background: var(--saffron-vibrant);
+  border-radius: var(--radius-full);
+}
+
+.btn-nav-action {
+  background: var(--green-forest);
+  color: #FFF !important;
+  font-weight: 600;
+  font-size: 0.88rem;
+  padding: 8px 18px;
+  border-radius: var(--radius-full);
+  box-shadow: 0 2px 8px rgba(45, 90, 39, 0.2);
+}
+
+.btn-nav-action:hover {
+  background: var(--green-deep);
+  transform: translateY(-1px);
+}
+
+.mobile-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  color: var(--text-dark);
+}
+
+/* ==========================================================================
+   Hero Section (Home Page)
+   ========================================================================== */
+.hero-section {
+  position: relative;
+  padding: 68px 0 52px;
+  background: linear-gradient(175deg, #FAF6EF 0%, #F5ECE0 100%);
+  border-bottom: 1px solid var(--border-subtle);
+  overflow: hidden;
+}
+
+.hero-content {
+  text-align: center;
+  max-width: 860px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.sanskrit-invocation {
+  display: inline-block;
+  background: var(--green-light);
+  color: var(--green-deep);
+  padding: 6px 16px;
+  border-radius: var(--radius-full);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  margin-bottom: 20px;
+  border: 1px solid var(--green-tint);
+}
+
+.hero-title {
+  font-size: 2.85rem;
+  line-height: 1.2;
+  margin-bottom: 18px;
+  color: var(--green-deep);
+}
+
+.hero-title span {
+  color: var(--saffron-vibrant);
+}
+
+.hero-subtitle {
+  font-size: 1.15rem;
+  color: var(--text-body);
+  line-height: 1.7;
+  margin-bottom: 32px;
+  font-weight: 400;
+}
+
+.hero-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  padding: 12px 24px;
+  border-radius: var(--radius-full);
+  border: none;
+  cursor: pointer;
+  transition: var(--transition);
+  text-decoration: none;
+}
+
+.btn-primary {
+  background: var(--saffron-vibrant);
+  color: #FFF;
+  box-shadow: 0 4px 14px rgba(217, 95, 26, 0.28);
+}
+
+.btn-primary:hover {
+  background: var(--terracotta);
+  color: #FFF;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(217, 95, 26, 0.35);
+}
+
+.btn-secondary {
+  background: #FFF;
+  color: var(--green-forest);
+  border: 1px solid var(--border-strong);
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-secondary:hover {
+  background: var(--green-light);
+  color: var(--green-deep);
+  border-color: var(--green-sage);
+  transform: translateY(-2px);
+}
+
+/* Stats Ribbon */
+.stats-strip {
+  display: flex;
+  justify-content: center;
+  gap: 48px;
+  padding: 22px 0 0;
+  border-top: 1px solid var(--border-subtle);
+  flex-wrap: wrap;
+}
+
+.stat-item {
+  text-align: center;
+}
+
+.stat-number {
+  font-family: 'Cinzel', serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--green-forest);
+}
+
+.stat-label {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+/* ==========================================================================
+   Section Headers & Category Pills
+   ========================================================================== */
+.section-wrapper {
+  padding: 60px 0;
+}
+
+.section-header {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto 40px;
+}
+
+.section-pill {
+  display: inline-block;
+  background: var(--saffron-light);
+  color: var(--saffron-vibrant);
+  padding: 4px 14px;
+  border-radius: var(--radius-full);
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 12px;
+}
+
+.section-title {
+  font-size: 2.1rem;
+  color: var(--green-deep);
+  margin-bottom: 12px;
+}
+
+.section-desc {
+  font-size: 1rem;
+  color: var(--text-muted);
+}
+
+/* ==========================================================================
+   Element Grid & Cards
+   ========================================================================== */
+.elements-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 28px;
+}
+
+.element-card {
+  background: var(--bg-card);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-subtle);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  transition: var(--transition);
+  position: relative;
+}
+
+.element-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-hover);
+  border-color: var(--border-strong);
+}
+
+.card-media {
+  position: relative;
+  height: 200px;
+  background: #F4ECE0;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.element-card:hover .card-media img {
+  transform: scale(1.05);
+}
+
+.card-category-badge {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  background: rgba(30, 63, 26, 0.88);
+  color: #FFF;
+  font-size: 0.74rem;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  backdrop-filter: blur(4px);
+  letter-spacing: 0.03em;
+}
+
+.card-body {
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.card-title {
+  font-size: 1.25rem;
+  color: var(--green-deep);
+  margin-bottom: 10px;
+  line-height: 1.3;
+}
+
+.card-description {
+  font-size: 0.92rem;
+  color: var(--text-body);
+  line-height: 1.6;
+  margin-bottom: 18px;
+  flex-grow: 1;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Quick Preview Badges in Card */
+.card-meta-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 18px;
+  padding-top: 14px;
+  border-top: 1px dashed var(--border-subtle);
+}
+
+.meta-tag {
+  font-size: 0.75rem;
+  padding: 3px 10px;
+  border-radius: var(--radius-sm);
+  font-weight: 500;
+}
+
+.tag-tradition {
+  background: var(--saffron-light);
+  color: var(--saffron-vibrant);
+}
+
+.tag-science {
+  background: var(--green-light);
+  color: var(--green-forest);
+}
+
+.tag-festival {
+  background: #FFF8E7;
+  color: var(--gold-sacred);
+}
+
+.card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 12px;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.card-link-btn {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--saffron-vibrant);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: var(--transition);
+}
+
+.card-link-btn:hover {
+  color: var(--terracotta);
+  transform: translateX(4px);
+}
+
+/* ==========================================================================
+   Browse & Filter Page
+   ========================================================================== */
+.browse-toolbar {
+  background: #FFF;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  box-shadow: var(--shadow-sm);
+  margin-bottom: 36px;
+}
+
+.search-bar-wrapper {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.search-input {
+  width: 100%;
+  padding: 14px 20px 14px 48px;
+  font-size: 1rem;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-full);
+  background: var(--bg-cream);
+  color: var(--text-dark);
+  font-family: inherit;
+  transition: var(--transition);
+}
+
+.search-input:focus {
+  outline: none;
+  background: #FFF;
+  border-color: var(--saffron-vibrant);
+  box-shadow: 0 0 0 3px rgba(217, 95, 26, 0.15);
+}
+
+.search-icon {
+  position: absolute;
+  left: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-muted);
+  pointer-events: none;
+}
+
+.filter-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.category-filter-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.filter-pill {
+  padding: 7px 16px;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--border-subtle);
+  background: var(--bg-card-subtle);
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-body);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.filter-pill:hover {
+  background: var(--green-light);
+  color: var(--green-deep);
+  border-color: var(--green-tint);
+}
+
+.filter-pill.active {
+  background: var(--green-forest);
+  color: #FFF;
+  border-color: var(--green-forest);
+}
+
+.festival-select {
+  padding: 8px 16px;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--border-strong);
+  background: #FFF;
+  font-size: 0.88rem;
+  color: var(--text-dark);
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.festival-select:focus {
+  outline: none;
+  border-color: var(--saffron-vibrant);
+}
+
+.results-count {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin-bottom: 20px;
+}
+
+/* ==========================================================================
+   Detail Page: "Belief vs Science" Exploration
+   ========================================================================== */
+.detail-header-card {
+  background: #FFF;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-subtle);
+  padding: 36px;
+  box-shadow: var(--shadow-md);
+  margin-bottom: 36px;
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  gap: 36px;
+  align-items: center;
+}
+
+.detail-image-box {
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: var(--bg-parchment);
+  border: 1px solid var(--border-subtle);
+  box-shadow: var(--shadow-sm);
+}
+
+.detail-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.detail-title {
+  font-size: 2.3rem;
+  color: var(--green-deep);
+  margin-bottom: 12px;
+  line-height: 1.2;
+}
+
+.detail-desc {
+  font-size: 1.05rem;
+  color: var(--text-body);
+  line-height: 1.7;
+  margin-bottom: 24px;
+}
+
+/* The Belief vs Science Split Card */
+.comparison-wrapper {
+  margin-bottom: 40px;
+}
+
+.comparison-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+.tradition-side, .science-side {
+  background: #FFF;
+  border-radius: var(--radius-md);
+  padding: 30px;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+
+.tradition-side {
+  border: 2px solid #F6D6C2;
+  border-top: 6px solid var(--saffron-vibrant);
+}
+
+.science-side {
+  border: 2px solid var(--green-tint);
+  border-top: 6px solid var(--green-forest);
+}
+
+.card-header-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 16px;
+}
+
+.tradition-side .card-header-badge {
+  color: var(--saffron-vibrant);
+}
+
+.science-side .card-header-badge {
+  color: var(--green-forest);
+}
+
+.comparison-heading {
+  font-size: 1.35rem;
+  margin-bottom: 14px;
+}
+
+.tradition-side .comparison-heading {
+  color: var(--terracotta);
+}
+
+.science-side .comparison-heading {
+  color: var(--green-deep);
+}
+
+.comparison-text {
+  font-size: 0.98rem;
+  line-height: 1.75;
+  color: var(--text-body);
+}
+
+/* Synthesis Banner */
+.synthesis-card {
+  background: linear-gradient(135deg, #FAF6EE 0%, #EBF4E9 100%);
+  border: 1px solid var(--green-tint);
+  border-radius: var(--radius-md);
+  padding: 24px 30px;
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  box-shadow: var(--shadow-sm);
+  margin-bottom: 36px;
+}
+
+.synthesis-icon {
+  font-size: 2rem;
+  color: var(--green-forest);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.synthesis-title {
+  font-size: 1.15rem;
+  color: var(--green-deep);
+  margin-bottom: 6px;
+}
+
+.synthesis-body {
+  font-size: 0.95rem;
+  color: var(--text-body);
+  line-height: 1.6;
+}
+
+/* Linked Festivals Section on Detail Page */
+.linked-festivals-wrapper {
+  background: #FFF;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-subtle);
+  padding: 28px;
+  box-shadow: var(--shadow-sm);
+  margin-bottom: 36px;
+}
+
+.detail-nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0;
+}
+
+/* ==========================================================================
+   Festivals Page
+   ========================================================================== */
+.festivals-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  gap: 28px;
+}
+
+.festival-card {
+  background: #FFF;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-subtle);
+  padding: 26px;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  transition: var(--transition);
+  position: relative;
+}
+
+.festival-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover);
+  border-color: var(--border-strong);
+}
+
+.festival-month-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--saffron-light);
+  color: var(--saffron-vibrant);
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  margin-bottom: 12px;
+  width: fit-content;
+}
+
+.festival-name {
+  font-size: 1.35rem;
+  color: var(--green-deep);
+  margin-bottom: 10px;
+}
+
+.honors-element-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--green-light);
+  color: var(--green-forest);
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+  font-size: 0.82rem;
+  font-weight: 600;
+  margin-bottom: 16px;
+  width: fit-content;
+}
+
+.festival-desc {
+  font-size: 0.93rem;
+  line-height: 1.65;
+  color: var(--text-body);
+  flex-grow: 1;
+}
+
+/* ==========================================================================
+   Quiz Page: "Superstition or Science?"
+   ========================================================================== */
+.quiz-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.quiz-progress-bar {
+  background: var(--border-subtle);
+  height: 8px;
+  border-radius: var(--radius-full);
+  margin-bottom: 24px;
+  overflow: hidden;
+}
+
+.quiz-progress-fill {
+  background: linear-gradient(90deg, var(--green-forest) 0%, var(--saffron-vibrant) 100%);
+  height: 100%;
+  width: 10%;
+  transition: width 0.35s ease;
+}
+
+.quiz-card {
+  background: #FFF;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-subtle);
+  padding: 36px;
+  box-shadow: var(--shadow-md);
+  margin-bottom: 28px;
+  position: relative;
+}
+
+.quiz-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  font-weight: 600;
+  margin-bottom: 18px;
+}
+
+.question-text {
+  font-size: 1.35rem;
+  color: var(--green-deep);
+  line-height: 1.45;
+  margin-bottom: 28px;
+  font-weight: 600;
+}
+
+.quiz-options {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 26px;
+}
+
+.option-btn {
+  background: var(--bg-card-subtle);
+  border: 1.5px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 16px 20px;
+  text-align: left;
+  font-size: 0.98rem;
+  color: var(--text-dark);
+  cursor: pointer;
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  transition: var(--transition);
+  font-family: inherit;
+  line-height: 1.5;
+}
+
+.option-btn:hover:not(:disabled) {
+  background: var(--green-light);
+  border-color: var(--green-sage);
+  transform: translateX(4px);
+}
+
+.option-letter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: var(--radius-full);
+  background: #FFF;
+  border: 1px solid var(--border-strong);
+  font-weight: 700;
+  font-size: 0.82rem;
+  flex-shrink: 0;
+  color: var(--text-dark);
+}
+
+/* Option states after selection */
+.option-btn.correct {
+  background: #E8F8ED !important;
+  border-color: #27AE60 !important;
+  color: #145A32 !important;
+}
+
+.option-btn.correct .option-letter {
+  background: #27AE60;
+  color: #FFF;
+  border-color: #27AE60;
+}
+
+.option-btn.incorrect {
+  background: #FDEDEC !important;
+  border-color: #E74C3C !important;
+  color: #78281F !important;
+}
+
+.option-btn.incorrect .option-letter {
+  background: #E74C3C;
+  color: #FFF;
+  border-color: #E74C3C;
+}
+
+.option-btn:disabled {
+  cursor: default;
+}
+
+/* Explanation Box */
+.explanation-box {
+  background: #FAF8F2;
+  border-radius: var(--radius-md);
+  border-left: 4px solid var(--green-forest);
+  padding: 20px;
+  margin-bottom: 24px;
+  animation: fadeIn 0.3s ease;
+  display: none;
+}
+
+.explanation-heading {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--green-forest);
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.explanation-text {
+  font-size: 0.92rem;
+  color: var(--text-body);
+  line-height: 1.65;
+}
+
+/* Final Score Card */
+.score-card {
+  text-align: center;
+  padding: 44px 28px;
+}
+
+.score-badge-circle {
+  width: 120px;
+  height: 120px;
+  border-radius: var(--radius-full);
+  background: var(--green-light);
+  border: 4px solid var(--green-forest);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 24px;
+}
+
+.score-number {
+  font-family: 'Cinzel', serif;
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--green-deep);
+  line-height: 1;
+}
+
+.score-total {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.score-message {
+  font-size: 1.6rem;
+  color: var(--green-deep);
+  margin-bottom: 12px;
+}
+
+.score-feedback {
+  font-size: 1.05rem;
+  color: var(--text-body);
+  max-width: 540px;
+  margin: 0 auto 30px;
+}
+
+/* ==========================================================================
+   Admin Section & Dashboard
+   ========================================================================== */
+.admin-card {
+  background: #FFF;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-subtle);
+  padding: 32px;
+  box-shadow: var(--shadow-md);
+  margin-bottom: 36px;
+}
+
+.admin-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 28px;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.admin-tabs {
+  display: flex;
+  gap: 10px;
+  border-bottom: 2px solid var(--border-subtle);
+  margin-bottom: 28px;
+  overflow-x: auto;
+}
+
+.admin-tab-btn {
+  padding: 10px 20px;
+  border: none;
+  background: none;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  cursor: pointer;
+  border-bottom: 3px solid transparent;
+  margin-bottom: -2px;
+  transition: var(--transition);
+  font-family: inherit;
+  white-space: nowrap;
+}
+
+.admin-tab-btn.active {
+  color: var(--saffron-vibrant);
+  border-bottom-color: var(--saffron-vibrant);
+}
+
+.admin-table-wrapper {
+  overflow-x: auto;
+}
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.92rem;
+}
+
+.admin-table th, .admin-table td {
+  padding: 14px 16px;
+  text-align: left;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.admin-table th {
+  background: var(--bg-card-subtle);
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+.admin-table tr:hover {
+  background: #FCF9F4;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.btn-sm {
+  padding: 6px 12px;
+  font-size: 0.8rem;
+  border-radius: var(--radius-sm);
+}
+
+.btn-danger {
+  background: #C0392B;
+  color: #FFF;
+}
+
+.btn-danger:hover {
+  background: #962D22;
+  color: #FFF;
+}
+
+.btn-edit {
+  background: #F39C12;
+  color: #FFF;
+}
+
+.btn-edit:hover {
+  background: #D68910;
+  color: #FFF;
+}
+
+/* Forms */
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-label {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-dark);
+  margin-bottom: 8px;
+}
+
+.form-control {
+  width: 100%;
+  padding: 10px 14px;
+  font-size: 0.95rem;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  background: #FFF;
+  color: var(--text-dark);
+  font-family: inherit;
+  transition: var(--transition);
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: var(--saffron-vibrant);
+  box-shadow: 0 0 0 3px rgba(217, 95, 26, 0.15);
+}
+
+textarea.form-control {
+  min-height: 100px;
+  resize: vertical;
+}
+
+/* Alerts / Flash Messages */
+.alert {
+  padding: 14px 20px;
+  border-radius: var(--radius-sm);
+  margin-bottom: 24px;
+  font-size: 0.92rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.alert-success {
+  background: #D5F5E3;
+  color: #196F3D;
+  border: 1px solid #A9DFBF;
+}
+
+.alert-danger {
+  background: #FADBD8;
+  color: #943126;
+  border: 1px solid #F5B7B1;
+}
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+.site-footer {
+  margin-top: auto;
+  background: #201D1A;
+  color: #D5C7B8;
+  padding: 60px 0 24px;
+  border-top: 4px solid var(--saffron-vibrant);
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 40px;
+  margin-bottom: 40px;
+}
+
+.footer-brand .brand-title {
+  color: #FFF;
+}
+
+.footer-desc {
+  font-size: 0.92rem;
+  line-height: 1.7;
+  color: #A89F93;
+  margin-top: 12px;
+  max-width: 420px;
+}
+
+.footer-links-title {
+  color: #FFF;
+  font-size: 1.05rem;
+  margin-bottom: 16px;
+  font-weight: 600;
+}
+
+.footer-links-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.footer-link {
+  color: #A89F93;
+  font-size: 0.9rem;
+  transition: var(--transition);
+}
+
+.footer-link:hover {
+  color: var(--saffron-warm);
+  transform: translateX(4px);
+}
+
+.footer-bottom {
+  text-align: center;
+  padding-top: 24px;
+  border-top: 1px solid #36322C;
+  font-size: 0.85rem;
+  color: #7E766D;
+}
+
+/* ==========================================================================
+   Keyframes & Responsive Breakpoints
+   ========================================================================== */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 992px) {
+  .hero-title {
+    font-size: 2.3rem;
+  }
+  .detail-header-card {
+    grid-template-columns: 1fr;
+    padding: 28px;
+  }
+  .comparison-grid {
+    grid-template-columns: 1fr;
+  }
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .header-container {
+    height: 68px;
+  }
+  .mobile-toggle {
+    display: block;
+  }
+  .nav-menu {
+    position: fixed;
+    top: 68px;
+    left: 0;
+    right: 0;
+    background: var(--bg-cream);
+    flex-direction: column;
+    padding: 24px;
+    gap: 16px;
+    border-bottom: 1px solid var(--border-subtle);
+    box-shadow: var(--shadow-md);
+    display: none;
+  }
+  .nav-menu.open {
+    display: flex;
+  }
+  .hero-title {
+    font-size: 1.95rem;
+  }
+  .stats-strip {
+    gap: 24px;
+  }
+  .elements-grid {
+    grid-template-columns: 1fr;
+  }
+  .festivals-grid {
+    grid-template-columns: 1fr;
+  }
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+}

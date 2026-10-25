@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="100%" height="100%">
+  <defs>
+    <linearGradient id="gangaSky" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#E1F5FE"/>
+      <stop offset="60%" stop-color="#B3E5FC"/>
+      <stop offset="100%" stop-color="#81D4FA"/>
+    </linearGradient>
+    <linearGradient id="mtnBack" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="100%" stop-color="#90A4AE"/>
+    </linearGradient>
+    <linearGradient id="mtnMid" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#78909C"/>
+      <stop offset="100%" stop-color="#455A64"/>
+    </linearGradient>
+    <linearGradient id="riverGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4DD0E1"/>
+      <stop offset="50%" stop-color="#00ACC1"/>
+      <stop offset="100%" stop-color="#00695C"/>
+    </linearGradient>
+    <linearGradient id="ghatStone" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#D7CCC8"/>
+      <stop offset="100%" stop-color="#A1887F"/>
+    </linearGradient>
+  </defs>
+  <!-- Celestial Sky -->
+  <rect width="400" height="300" fill="url(#gangaSky)"/>
+  
+  <!-- Snow Peaks (Himalayan Gangotri source) -->
+  <polygon points="120,40 180,130 60,130" fill="url(#mtnBack)"/>
+  <polygon points="190,30 270,140 130,140" fill="url(#mtnBack)"/>
+  <polygon points="280,50 340,130 220,130" fill="url(#mtnBack)"/>
+  
+  <!-- Lower Mountain Ridges -->
+  <polygon points="20,90 100,160 0,160" fill="url(#mtnMid)"/>
+  <polygon points="310,85 410,165 240,165" fill="url(#mtnMid)"/>
+  
+  <!-- Sacred Ganga Stream emerging -->
+  <path d="M195 125 Q205 150 185 170 Q150 200 220 220 Q290 240 200 300 L0 300 L0 250 Q100 230 150 170 Z" fill="url(#riverGrad)" opacity="0.95"/>
+  <path d="M220 220 Q320 230 400 250 L400 300 L200 300 Z" fill="url(#riverGrad)" opacity="0.95"/>
+
+  <!-- Ghat Steps on the left -->
+  <polygon points="0,210 90,210 100,230 0,230" fill="url(#ghatStone)"/>
+  <polygon points="0,230 110,230 120,250 0,250" fill="#BCAAA4"/>
+  <polygon points="0,250 130,250 140,270 0,270" fill="url(#ghatStone)"/>
+  <polygon points="0,270 150,270 160,300 0,300" fill="#BCAAA4"/>
+
+  <!-- Floating Brass Diya with Marigold on River -->
+  <ellipse cx="230" cy="245" rx="14" ry="5" fill="#FFB300" stroke="#E65100" stroke-width="1"/>
+  <!-- Diya flame -->
+  <path d="M230 242 C233 237 234 233 230 227 C226 233 227 237 230 242 Z" fill="#FF3D00"/>
+  <circle cx="230" cy="236" r="2" fill="#FFFF00"/>
+  <!-- Floating Marigolds -->
+  <circle cx="242" cy="246" r="4" fill="#FF9100"/>
+  <circle cx="218" cy="247" r="3.5" fill="#FF6D00"/>
+
+  <!-- River Flow Ripples -->
+  <path d="M160 185 Q190 180 210 190" stroke="#E0F7FA" stroke-width="2" fill="none" opacity="0.8"/>
+  <path d="M170 210 Q210 205 240 215" stroke="#E0F7FA" stroke-width="2" fill="none" opacity="0.8"/>
+  <path d="M250 255 Q300 250 350 260" stroke="#E0F7FA" stroke-width="2" fill="none" opacity="0.7"/>
+</svg>

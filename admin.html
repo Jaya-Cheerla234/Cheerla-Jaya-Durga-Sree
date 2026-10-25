@@ -1,0 +1,421 @@
+{% extends "base.html" %}
+
+{% block title %}Admin Dashboard - Prakriti Explorer{% endblock %}
+
+{% block content %}
+<section class="section-wrapper" style="padding-top: 36px;">
+  <div class="container">
+
+    <!-- Admin Header -->
+    <div class="admin-header">
+      <div>
+        <span class="section-pill">Curator Center</span>
+        <h1 style="font-size: 2.1rem; color: var(--green-deep); margin-bottom: 6px;">
+          Prakriti Content Management
+        </h1>
+        <p style="font-size: 0.95rem; color: var(--text-muted);">
+          Add, edit, and curate sacred nature elements, traditions, scientific explanations, festivals, and quiz questions.
+        </p>
+      </div>
+      <div>
+        <a href="{{ url_for('admin_logout') }}" class="btn btn-secondary" style="border-color: #E74C3C; color: #C0392B;">
+          🚪 Log Out
+        </a>
+      </div>
+    </div>
+
+    <!-- Stats Summary Row -->
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 18px; margin-bottom: 32px;">
+      <div style="background: #FFF; border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 18px; text-align: center;">
+        <div style="font-family: 'Cinzel', serif; font-size: 1.8rem; font-weight: 700; color: var(--green-forest);">{{ stats.elements }}</div>
+        <div style="font-size: 0.78rem; text-transform: uppercase; color: var(--text-muted); font-weight: 600;">Nature Elements</div>
+      </div>
+      <div style="background: #FFF; border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 18px; text-align: center;">
+        <div style="font-family: 'Cinzel', serif; font-size: 1.8rem; font-weight: 700; color: var(--saffron-vibrant);">{{ stats.beliefs }}</div>
+        <div style="font-size: 0.78rem; text-transform: uppercase; color: var(--text-muted); font-weight: 600;">Belief & Science Cards</div>
+      </div>
+      <div style="background: #FFF; border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 18px; text-align: center;">
+        <div style="font-family: 'Cinzel', serif; font-size: 1.8rem; font-weight: 700; color: var(--gold-sacred);">{{ stats.festivals }}</div>
+        <div style="font-size: 0.78rem; text-transform: uppercase; color: var(--text-muted); font-weight: 600;">Linked Festivals</div>
+      </div>
+      <div style="background: #FFF; border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 18px; text-align: center;">
+        <div style="font-family: 'Cinzel', serif; font-size: 1.8rem; font-weight: 700; color: var(--green-sage);">{{ stats.quiz_questions }}</div>
+        <div style="font-size: 0.78rem; text-transform: uppercase; color: var(--text-muted); font-weight: 600;">Quiz Questions</div>
+      </div>
+    </div>
+
+    <!-- Admin Navigation Tabs -->
+    <div class="admin-tabs">
+      <button type="button" class="admin-tab-btn active" data-tab="tabElements">
+        🌿 Elements ({{ elements|length }})
+      </button>
+      <button type="button" class="admin-tab-btn" data-tab="tabBeliefs">
+        📜 Beliefs & Science ({{ beliefs|length }})
+      </button>
+      <button type="button" class="admin-tab-btn" data-tab="tabFestivals">
+        🎉 Festivals ({{ festivals|length }})
+      </button>
+      <button type="button" class="admin-tab-btn" data-tab="tabQuiz">
+        ❓ Quiz Questions ({{ quiz_questions|length }})
+      </button>
+    </div>
+
+    <!-- =====================================================================
+         TAB 1: ELEMENTS
+         ===================================================================== -->
+    <div id="tabElements" class="admin-tab-content">
+      <!-- Add Element Form Card -->
+      <div class="admin-card" style="margin-bottom: 28px;">
+        <h3 style="font-size: 1.25rem; color: var(--green-deep); margin-bottom: 16px;">
+          ➕ Add New Nature Element
+        </h3>
+        <form method="POST" action="{{ url_for('admin_add_element') }}">
+          <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 16px;">
+            <div class="form-group">
+              <label class="form-label">Element Name</label>
+              <input type="text" name="name" class="form-control" placeholder="e.g., Lotus (Kamala / Nelumbo nucifera)" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Category</label>
+              <select name="category" class="form-control" required>
+                <option value="Celestial Bodies">Celestial Bodies</option>
+                <option value="Flora & Sacred Plants">Flora & Sacred Plants</option>
+                <option value="Fauna & Sacred Animals">Fauna & Sacred Animals</option>
+                <option value="Water Bodies">Water Bodies</option>
+                <option value="Earth & Landforms">Earth & Landforms</option>
+                <option value="Elemental Forces">Elemental Forces</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Brief Description / Significance</label>
+            <textarea name="description" class="form-control" rows="2" placeholder="Brief cultural and ecological summary of this element..." required></textarea>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Image URL / Path</label>
+            <input type="text" name="image_url" class="form-control" value="/static/images/tulsi.svg" placeholder="/static/images/your-image.svg or https://..." required>
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="padding: 10px 24px;">
+            Add Element to Database
+          </button>
+        </form>
+      </div>
+
+      <!-- Elements Table -->
+      <div class="admin-card">
+        <h3 style="font-size: 1.25rem; color: var(--green-deep); margin-bottom: 16px;">
+          Existing Elements Portfolio
+        </h3>
+        <div class="admin-table-wrapper">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th style="width: 50px;">ID</th>
+                <th style="width: 70px;">Media</th>
+                <th>Name</th>
+                <th>Category</th>
+                <th>Description</th>
+                <th style="width: 140px; text-align: right;">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for elem in elements %}
+              <tr>
+                <td><strong>#{{ elem.id }}</strong></td>
+                <td>
+                  <img src="{{ elem.image_url }}" alt="{{ elem.name }}" style="width: 44px; height: 34px; object-fit: cover; border-radius: 4px; border: 1px solid var(--border-subtle);">
+                </td>
+                <td>
+                  <strong>{{ elem.name }}</strong>
+                </td>
+                <td>
+                  <span class="meta-tag tag-science">{{ elem.category }}</span>
+                </td>
+                <td style="font-size: 0.86rem; color: var(--text-body); max-width: 320px;">
+                  {{ elem.description }}
+                </td>
+                <td style="text-align: right;">
+                  <div class="action-buttons" style="justify-content: flex-end;">
+                    <a href="{{ url_for('admin_edit_element', element_id=elem.id) }}" class="btn btn-sm btn-edit">Edit</a>
+                    <form method="POST" action="{{ url_for('admin_delete_element', element_id=elem.id) }}" onsubmit="return confirm('Are you sure you want to delete {{ elem.name }}? This will also remove its associated beliefs.');">
+                      <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                    </form>
+                  </div>
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- =====================================================================
+         TAB 2: BELIEFS & SCIENCE
+         ===================================================================== -->
+    <div id="tabBeliefs" class="admin-tab-content" style="display: none;">
+      <!-- Add Belief Form Card -->
+      <div class="admin-card" style="margin-bottom: 28px;">
+        <h3 style="font-size: 1.25rem; color: var(--green-deep); margin-bottom: 16px;">
+          ➕ Add Tradition vs Science Card
+        </h3>
+        <form method="POST" action="{{ url_for('admin_add_belief') }}">
+          <div class="form-group">
+            <label class="form-label">Select Element</label>
+            <select name="element_id" class="form-control" required>
+              {% for elem in elements %}
+              <option value="{{ elem.id }}">{{ elem.name }} (#{{ elem.id }})</option>
+              {% endfor %}
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">🪔 Sacred Tradition & Cultural Belief Text</label>
+            <textarea name="belief_text" class="form-control" rows="3" placeholder="Describe the mythological background, spiritual reverence, or traditional ritual..." required></textarea>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">🔬 Scientific & Ecological Rationale Text</label>
+            <textarea name="science_text" class="form-control" rows="3" placeholder="Explain the botanical, microbiological, or ecological conservation reason..." required></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="padding: 10px 24px;">
+            Save Belief & Science Card
+          </button>
+        </form>
+      </div>
+
+      <!-- Beliefs Table -->
+      <div class="admin-card">
+        <h3 style="font-size: 1.25rem; color: var(--green-deep); margin-bottom: 16px;">
+          Existing Beliefs vs Science Records
+        </h3>
+        <div class="admin-table-wrapper">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th style="width: 50px;">ID</th>
+                <th style="width: 150px;">Element</th>
+                <th>Cultural Belief</th>
+                <th>Ecological Science</th>
+                <th style="width: 140px; text-align: right;">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for b in beliefs %}
+              <tr>
+                <td><strong>#{{ b.id }}</strong></td>
+                <td><strong>{{ b.element_name or 'Unlinked' }}</strong></td>
+                <td style="font-size: 0.85rem; color: var(--text-body); max-width: 280px;">
+                  {{ b.belief_text }}
+                </td>
+                <td style="font-size: 0.85rem; color: var(--text-body); max-width: 280px;">
+                  {{ b.science_text }}
+                </td>
+                <td style="text-align: right;">
+                  <div class="action-buttons" style="justify-content: flex-end;">
+                    <a href="{{ url_for('admin_edit_belief', belief_id=b.id) }}" class="btn btn-sm btn-edit">Edit</a>
+                    <form method="POST" action="{{ url_for('admin_delete_belief', belief_id=b.id) }}" onsubmit="return confirm('Are you sure you want to delete this belief entry?');">
+                      <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                    </form>
+                  </div>
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- =====================================================================
+         TAB 3: FESTIVALS
+         ===================================================================== -->
+    <div id="tabFestivals" class="admin-tab-content" style="display: none;">
+      <!-- Add Festival Form Card -->
+      <div class="admin-card" style="margin-bottom: 28px;">
+        <h3 style="font-size: 1.25rem; color: var(--green-deep); margin-bottom: 16px;">
+          ➕ Add Nature Festival
+        </h3>
+        <form method="POST" action="{{ url_for('admin_add_festival') }}">
+          <div style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 16px;">
+            <div class="form-group">
+              <label class="form-label">Festival Name</label>
+              <input type="text" name="name" class="form-control" placeholder="e.g., Vasant Panchami" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Month (Hindu & Gregorian)</label>
+              <input type="text" name="month" class="form-control" placeholder="e.g., Magha (Jan - Feb)" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Linked Element</label>
+              <select name="element_id" class="form-control">
+                <option value="">None / General</option>
+                {% for elem in elements %}
+                <option value="{{ elem.id }}">{{ elem.name }}</option>
+                {% endfor %}
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Festival Celebration & Ecological Significance</label>
+            <textarea name="description" class="form-control" rows="3" placeholder="Describe the rituals, timing, and how nature is honored..." required></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="padding: 10px 24px;">
+            Add Festival
+          </button>
+        </form>
+      </div>
+
+      <!-- Festivals Table -->
+      <div class="admin-card">
+        <h3 style="font-size: 1.25rem; color: var(--green-deep); margin-bottom: 16px;">
+          Existing Festivals Portfolio
+        </h3>
+        <div class="admin-table-wrapper">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th style="width: 50px;">ID</th>
+                <th>Festival Name</th>
+                <th>Month</th>
+                <th>Honors Element</th>
+                <th>Celebration Context</th>
+                <th style="width: 140px; text-align: right;">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for f in festivals %}
+              <tr>
+                <td><strong>#{{ f.id }}</strong></td>
+                <td><strong>{{ f.name }}</strong></td>
+                <td><span class="festival-month-badge">{{ f.month }}</span></td>
+                <td>{{ f.element_name or 'General' }}</td>
+                <td style="font-size: 0.86rem; color: var(--text-body); max-width: 300px;">
+                  {{ f.description }}
+                </td>
+                <td style="text-align: right;">
+                  <div class="action-buttons" style="justify-content: flex-end;">
+                    <a href="{{ url_for('admin_edit_festival', festival_id=f.id) }}" class="btn btn-sm btn-edit">Edit</a>
+                    <form method="POST" action="{{ url_for('admin_delete_festival', festival_id=f.id) }}" onsubmit="return confirm('Are you sure you want to delete {{ f.name }}?');">
+                      <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                    </form>
+                  </div>
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- =====================================================================
+         TAB 4: QUIZ QUESTIONS
+         ===================================================================== -->
+    <div id="tabQuiz" class="admin-tab-content" style="display: none;">
+      <!-- Add Quiz Question Form Card -->
+      <div class="admin-card" style="margin-bottom: 28px;">
+        <h3 style="font-size: 1.25rem; color: var(--green-deep); margin-bottom: 16px;">
+          ➕ Add Quiz Question
+        </h3>
+        <form method="POST" action="{{ url_for('admin_add_quiz') }}">
+          <div class="form-group">
+            <label class="form-label">Question Prompt</label>
+            <textarea name="question" class="form-control" rows="2" placeholder="e.g., Why was it customary to avoid cutting the Peepal tree...?" required></textarea>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+            <div class="form-group">
+              <label class="form-label">Option A</label>
+              <input type="text" name="option_a" class="form-control" placeholder="Option A text..." required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Option B</label>
+              <input type="text" name="option_b" class="form-control" placeholder="Option B text..." required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Option C</label>
+              <input type="text" name="option_c" class="form-control" placeholder="Option C text..." required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Option D</label>
+              <input type="text" name="option_d" class="form-control" placeholder="Option D text..." required>
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 160px 1fr; gap: 16px;">
+            <div class="form-group">
+              <label class="form-label">Correct Option</label>
+              <select name="correct_option" class="form-control" required>
+                <option value="A">A</option>
+                <option value="B">B</option>
+                <option value="C">C</option>
+                <option value="D">D</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Scientific Explanation</label>
+              <textarea name="explanation" class="form-control" rows="2" placeholder="Explain why the correct answer represents ecological/botanical science..." required></textarea>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="padding: 10px 24px;">
+            Add Quiz Question
+          </button>
+        </form>
+      </div>
+
+      <!-- Quiz Questions Table -->
+      <div class="admin-card">
+        <h3 style="font-size: 1.25rem; color: var(--green-deep); margin-bottom: 16px;">
+          Existing Quiz Challenges
+        </h3>
+        <div class="admin-table-wrapper">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th style="width: 50px;">ID</th>
+                <th>Question</th>
+                <th style="width: 60px;">Ans</th>
+                <th>Explanation</th>
+                <th style="width: 140px; text-align: right;">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for q in quiz_questions %}
+              <tr>
+                <td><strong>#{{ q.id }}</strong></td>
+                <td style="font-size: 0.9rem; font-weight: 600; color: var(--green-deep); max-width: 260px;">
+                  {{ q.question }}
+                </td>
+                <td>
+                  <span class="meta-tag tag-tradition" style="font-weight: 700;">{{ q.correct_option }}</span>
+                </td>
+                <td style="font-size: 0.85rem; color: var(--text-body); max-width: 320px;">
+                  {{ q.explanation }}
+                </td>
+                <td style="text-align: right;">
+                  <div class="action-buttons" style="justify-content: flex-end;">
+                    <a href="{{ url_for('admin_edit_quiz', question_id=q.id) }}" class="btn btn-sm btn-edit">Edit</a>
+                    <form method="POST" action="{{ url_for('admin_delete_quiz', question_id=q.id) }}" onsubmit="return confirm('Are you sure you want to delete this question?');">
+                      <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                    </form>
+                  </div>
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+{% endblock %}

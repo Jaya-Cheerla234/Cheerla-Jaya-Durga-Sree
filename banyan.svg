@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="100%" height="100%">
+  <defs>
+    <linearGradient id="banyanSky" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFF9C4"/>
+      <stop offset="60%" stop-color="#DCEDC8"/>
+      <stop offset="100%" stop-color="#C8E6C9"/>
+    </linearGradient>
+    <linearGradient id="banyanWood" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#4E342E"/>
+      <stop offset="50%" stop-color="#6D4C41"/>
+      <stop offset="100%" stop-color="#3E2723"/>
+    </linearGradient>
+    <linearGradient id="banyanFoliage" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#558B2F"/>
+      <stop offset="50%" stop-color="#2E7D32"/>
+      <stop offset="100%" stop-color="#1B5E20"/>
+    </linearGradient>
+  </defs>
+  <!-- Background -->
+  <rect width="400" height="300" fill="url(#banyanSky)"/>
+
+  <!-- Vast Spreading Canopy Outline (Ficus benghalensis) -->
+  <ellipse cx="200" cy="80" rx="190" ry="70" fill="url(#banyanFoliage)"/>
+  <ellipse cx="100" cy="100" rx="100" ry="55" fill="url(#banyanFoliage)"/>
+  <ellipse cx="300" cy="100" rx="100" ry="55" fill="url(#banyanFoliage)"/>
+
+  <!-- Central Great Trunk (Akshaya Vata) -->
+  <path d="M175 250 Q185 170 170 120 L230 120 Q215 170 225 250 Z" fill="url(#banyanWood)"/>
+
+  <!-- Vast Horizontal Spreading Heavy Branches -->
+  <path d="M170 120 Q100 110 30 115 L30 125 Q110 125 180 135 Z" fill="#4E342E"/>
+  <path d="M230 120 Q300 110 370 115 L370 125 Q290 125 220 135 Z" fill="#4E342E"/>
+
+  <!-- Hanging Aerial Prop Roots (Pillar Roots dropping to soil) -->
+  <!-- Left Pillar Roots -->
+  <path d="M60 120 Q55 180 50 250 L58 250 Q63 180 68 120 Z" fill="url(#banyanWood)"/>
+  <path d="M110 122 Q105 185 102 250 L110 250 Q113 185 118 122 Z" fill="url(#banyanWood)"/>
+  <path d="M145 125 Q140 180 142 250 L148 250 Q146 180 151 125 Z" fill="url(#banyanWood)"/>
+
+  <!-- Right Pillar Roots -->
+  <path d="M255 125 Q260 180 258 250 L252 250 Q254 180 249 125 Z" fill="url(#banyanWood)"/>
+  <path d="M290 122 Q295 185 298 250 L290 250 Q287 185 282 122 Z" fill="url(#banyanWood)"/>
+  <path d="M340 120 Q345 180 350 250 L342 250 Q337 180 332 120 Z" fill="url(#banyanWood)"/>
+
+  <!-- Free-hanging fine prop tendrils swaying in air -->
+  <g stroke="#8D6E63" stroke-width="1.8" fill="none">
+    <path d="M85 120 Q88 160 83 190"/>
+    <path d="M130 125 Q128 155 132 175"/>
+    <path d="M270 125 Q272 155 268 175"/>
+    <path d="M315 120 Q312 160 317 190"/>
+  </g>
+
+  <!-- Ground Mound & Stone Shrine underneath -->
+  <ellipse cx="200" cy="260" rx="180" ry="30" fill="#795548"/>
+  <ellipse cx="200" cy="275" rx="195" ry="25" fill="#5D4037"/>
+
+  <!-- Sacred Vat Savitri Threads tied around the main trunk -->
+  <path d="M178 210 Q200 215 222 210" stroke="#E53935" stroke-width="3" fill="none"/>
+  <path d="M179 216 Q200 221 221 216" stroke="#FDD835" stroke-width="2.5" fill="none"/>
+  <path d="M177 222 Q200 227 223 222" stroke="#E53935" stroke-width="2" fill="none"/>
+
+  <!-- Shivalinga Stone beneath tree roots -->
+  <ellipse cx="200" cy="248" rx="12" ry="5" fill="#212121"/>
+  <path d="M192 248 C192 238 208 238 208 248 Z" fill="#212121"/>
+  <!-- Tripundra mark on Lingam -->
+  <line x1="196" y1="242" x2="204" y2="242" stroke="#FFFFFF" stroke-width="1"/>
+  <line x1="196" y1="244" x2="204" y2="244" stroke="#FFFFFF" stroke-width="1"/>
+  <circle cx="200" cy="243" r="0.8" fill="#D32F2F"/>
+</svg>

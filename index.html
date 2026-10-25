@@ -1,0 +1,187 @@
+{% extends "base.html" %}
+
+{% block title %}Prakriti: Nature & Belief Explorer - Where Tradition Meets Ecological Science{% endblock %}
+
+{% block content %}
+<!-- =========================================================================
+     Hero Section
+     ========================================================================= -->
+<section class="hero-section">
+  <div class="container hero-content">
+    <div class="sanskrit-invocation">
+      ॐ द्यौः शान्तिरन्तरिक्षं शान्तिः पृथिवी शान्तिरापः शान्तिरोषधयः शान्तिः
+    </div>
+    
+    <h1 class="hero-title">
+      Where Sacred Tradition Meets <span>Ecological Wisdom</span>
+    </h1>
+    
+    <p class="hero-subtitle">
+      For millennia, Indian civilisation honored the Sun, sacred rivers, holy trees, snakes, mountains, and Mother Earth. 
+      Discover the respectful cultural beliefs behind these customs, the vibrant festivals linked to them, and the profound 
+      scientific foresight that made conservation a sacred duty.
+    </p>
+    
+    <div class="hero-actions">
+      <a href="{{ url_for('browse') }}" class="btn btn-primary">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        Explore Nature Elements
+      </a>
+      <a href="{{ url_for('quiz') }}" class="btn btn-secondary">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+        Take the Science Quiz
+      </a>
+    </div>
+
+    <!-- Quick Stats Strip -->
+    <div class="stats-strip">
+      <div class="stat-item">
+        <div class="stat-number">{{ stats.elements }}</div>
+        <div class="stat-label">Sacred Elements</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">{{ stats.beliefs }}</div>
+        <div class="stat-label">Tradition & Science Cards</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">{{ stats.festivals }}</div>
+        <div class="stat-label">Nature Festivals</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">{{ stats.quiz_questions }}</div>
+        <div class="stat-label">Quiz Challenges</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================================
+     Elements Grid Section
+     ========================================================================= -->
+<section class="section-wrapper">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-pill">Sacred Nature Portfolio</span>
+      <h2 class="section-title">Elements Honored Across India</h2>
+      <p class="section-desc">
+        Click on any element to examine the dual lens: cultural reverence as tradition, alongside empirical botanical, 
+        ecological, and environmental science.
+      </p>
+    </div>
+
+    <div class="elements-grid">
+      {% for elem in elements %}
+      <article class="element-card">
+        <div class="card-media">
+          <img src="{{ elem.image_url }}" alt="{{ elem.name }}" loading="lazy">
+          <span class="card-category-badge">{{ elem.category }}</span>
+        </div>
+        
+        <div class="card-body">
+          <h3 class="card-title">{{ elem.name }}</h3>
+          <p class="card-description">{{ elem.description }}</p>
+          
+          <div class="card-meta-tags">
+            <span class="meta-tag tag-tradition">Sacred Belief</span>
+            <span class="meta-tag tag-science">Ecological Rationale</span>
+            {% if elem.festival_names %}
+            <span class="meta-tag tag-festival">{{ elem.festival_names.split(',')[0] }}</span>
+            {% endif %}
+          </div>
+          
+          <div class="card-footer">
+            <span style="font-size: 0.8rem; color: var(--text-muted);">Element #{{ elem.id }}</span>
+            <a href="{{ url_for('element_detail', element_id=elem.id) }}" class="card-link-btn">
+              Explore Tradition & Science &rarr;
+            </a>
+          </div>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+
+    <div style="text-align: center; margin-top: 48px;">
+      <a href="{{ url_for('browse') }}" class="btn btn-secondary" style="padding: 14px 32px; font-size: 1rem;">
+        View All Elements with Live Filters &rarr;
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================================
+     Ecological Philosophy & Three Pillars Section
+     ========================================================================= -->
+<section id="philosophy" class="section-wrapper" style="background: var(--bg-parchment); border-top: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle);">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-pill">Ancient Foresight</span>
+      <h2 class="section-title">Why Reverence Rather Than Exploitation?</h2>
+      <p class="section-desc">
+        Modern ecology often treats nature as an external resource to manage. Traditional Indian philosophy 
+        viewed humans and nature as an unbroken biological continuum.
+      </p>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 28px;">
+      <!-- Pillar 1 -->
+      <div style="background: #FFF; border-radius: var(--radius-md); padding: 32px; border: 1px solid var(--border-subtle); box-shadow: var(--shadow-sm);">
+        <div style="width: 52px; height: 52px; border-radius: var(--radius-sm); background: var(--saffron-light); color: var(--saffron-vibrant); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin-bottom: 18px;">
+          🪔
+        </div>
+        <h3 style="font-size: 1.25rem; color: var(--green-deep); margin-bottom: 10px;">Sacred Duty (Dharma)</h3>
+        <p style="font-size: 0.93rem; color: var(--text-body); line-height: 1.65;">
+          Law codes can be bypassed, but sacred sanctity embeds deep, generational self-restraint. By elevating keystone 
+          trees like the Peepal and Banyan into deities, ancient sages ensured their unconditional preservation against deforestation.
+        </p>
+      </div>
+
+      <!-- Pillar 2 -->
+      <div style="background: #FFF; border-radius: var(--radius-md); padding: 32px; border: 1px solid var(--border-subtle); box-shadow: var(--shadow-sm);">
+        <div style="width: 52px; height: 52px; border-radius: var(--radius-sm); background: var(--green-light); color: var(--green-forest); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin-bottom: 18px;">
+          🌾
+        </div>
+        <h3 style="font-size: 1.25rem; color: var(--green-deep); margin-bottom: 10px;">Seasonal Agrarian Timing</h3>
+        <p style="font-size: 0.93rem; color: var(--text-body); line-height: 1.65;">
+          Festivals like Nag Panchami, Raja Parba, and Chhath coincide precisely with ecological flashpoints: monsoon snake displacements, 
+          soil aeration needs before sowing, and post-harvest atmospheric sanitization with hawan fires.
+        </p>
+      </div>
+
+      <!-- Pillar 3 -->
+      <div style="background: #FFF; border-radius: var(--radius-md); padding: 32px; border: 1px solid var(--border-subtle); box-shadow: var(--shadow-sm);">
+        <div style="width: 52px; height: 52px; border-radius: var(--radius-sm); background: #FFF9C4; color: var(--gold-sacred); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin-bottom: 18px;">
+          🧪
+        </div>
+        <h3 style="font-size: 1.25rem; color: var(--green-deep); margin-bottom: 10px;">Microbiome & Public Health</h3>
+        <p style="font-size: 0.93rem; color: var(--text-body); line-height: 1.65;">
+          From Tulsi courtyards releasing antimicrobial terpenes to the bactericidal phages of the River Ganga and the probiotics 
+          of indigenous cow dung (Jeevamrit), everyday traditions protected village public health.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================================
+     Interactive Quiz Invitation Banner
+     ========================================================================= -->
+<section class="section-wrapper">
+  <div class="container">
+    <div style="background: linear-gradient(135deg, var(--green-deep) 0%, var(--green-forest) 100%); border-radius: var(--radius-lg); padding: 50px 40px; color: #FFF; text-align: center; box-shadow: var(--shadow-lg); position: relative; overflow: hidden;">
+      <div style="max-width: 680px; margin: 0 auto; position: relative; z-index: 2;">
+        <span style="display: inline-block; background: rgba(255, 255, 255, 0.15); color: #FFF; padding: 4px 14px; border-radius: var(--radius-full); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 16px;">
+          Interactive Knowledge Challenge
+        </span>
+        <h2 style="font-size: 2.3rem; color: #FFF; margin-bottom: 16px;">Superstition or Science?</h2>
+        <p style="font-size: 1.05rem; color: #E8F5E9; line-height: 1.7; margin-bottom: 28px;">
+          Can you distinguish the ecological rationale behind tabooing tree cutting, offering milk to serpents, 
+          or fasting during lunar transits? Take our 10-question quiz with score tracking and in-depth explanations.
+        </p>
+        <a href="{{ url_for('quiz') }}" class="btn btn-primary" style="background: var(--saffron-vibrant); font-size: 1.05rem; padding: 14px 34px;">
+          Start the 10-Question Quiz &rarr;
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

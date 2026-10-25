@@ -1,0 +1,126 @@
+{% extends "base.html" %}
+
+{% block title %}Explore Nature Elements - Prakriti Explorer{% endblock %}
+
+{% block content %}
+<section class="section-wrapper" style="padding-top: 40px;">
+  <div class="container">
+    
+    <!-- Page Header -->
+    <div class="section-header" style="margin-bottom: 28px;">
+      <span class="section-pill">Search & Discover</span>
+      <h1 class="section-title">Explore Sacred Nature Elements</h1>
+      <p class="section-desc">
+        Filter through celestial bodies, flora, fauna, water bodies, and earth landforms revered across Indian traditions.
+      </p>
+    </div>
+
+    <!-- Browse & Filter Toolbar -->
+    <div class="browse-toolbar">
+      <!-- Search Bar -->
+      <div class="search-bar-wrapper">
+        <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        <input 
+          type="text" 
+          id="browseSearchInput" 
+          class="search-input" 
+          placeholder="Search by element name (e.g., Peepal, Ganga, Surya), belief, or science keywords..."
+          value="{{ current_search or '' }}"
+          autocomplete="off"
+        >
+      </div>
+
+      <!-- Controls: Category Pills & Festival Dropdown -->
+      <div class="filter-controls">
+        <!-- Category Pills -->
+        <div class="category-filter-pills">
+          <button type="button" class="filter-pill {% if not current_category or current_category == 'All' %}active{% endif %}" data-category="All">
+            All Elements
+          </button>
+          {% for cat in categories %}
+          <button type="button" class="filter-pill {% if current_category == cat %}active{% endif %}" data-category="{{ cat }}">
+            {{ cat }}
+          </button>
+          {% endfor %}
+        </div>
+
+        <!-- Festival Select Dropdown -->
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <label for="festivalFilterSelect" style="font-size: 0.85rem; font-weight: 600; color: var(--text-muted); white-space: nowrap;">
+            Filter by Festival:
+          </label>
+          <select id="festivalFilterSelect" class="festival-select">
+            <option value="">All Festivals</option>
+            {% for fest in festivals %}
+            <option value="{{ fest.id }}" {% if current_festival_id|string == fest.id|string %}selected{% endif %}>
+              {{ fest.name }}
+            </option>
+            {% endfor %}
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- Dynamic Results Counter -->
+    <div id="resultsCounter" class="results-count">
+      Showing {{ elements|length }} nature elements
+    </div>
+
+    <!-- Elements Grid -->
+    <div id="browseElementsContainer" class="elements-grid">
+      {% for elem in elements %}
+      <article 
+        class="element-card browse-element-card" 
+        data-id="{{ elem.id }}"
+        data-name="{{ elem.name }}"
+        data-category="{{ elem.category }}"
+        data-description="{{ elem.description }}"
+        data-festivals="{{ elem.festival_names or '' }}"
+        data-festival-id="{{ elem.festival_id or '' }}"
+      >
+        <div class="card-media">
+          <img src="{{ elem.image_url }}" alt="{{ elem.name }}" loading="lazy">
+          <span class="card-category-badge">{{ elem.category }}</span>
+        </div>
+        
+        <div class="card-body">
+          <h3 class="card-title">{{ elem.name }}</h3>
+          <p class="card-description">{{ elem.description }}</p>
+          
+          <div class="card-meta-tags">
+            <span class="meta-tag tag-tradition">Tradition</span>
+            <span class="meta-tag tag-science">Science</span>
+            {% if elem.festival_names %}
+            <span class="meta-tag tag-festival">{{ elem.festival_names.split(',')[0] }}</span>
+            {% endif %}
+          </div>
+          
+          <div class="card-footer">
+            <span style="font-size: 0.8rem; color: var(--text-muted);">Element #{{ elem.id }}</span>
+            <a href="{{ url_for('element_detail', element_id=elem.id) }}" class="card-link-btn">
+              View Belief vs Science &rarr;
+            </a>
+          </div>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+
+    <!-- No Results Fallback Placeholder -->
+    <div id="noResultsMessage" style="display: none; text-align: center; padding: 60px 20px; background: #FFF; border-radius: var(--radius-lg); border: 1px dashed var(--border-strong); margin-top: 20px;">
+      <div style="font-size: 2.5rem; margin-bottom: 12px;">🌿</div>
+      <h3 style="color: var(--green-deep); margin-bottom: 8px;">No matching elements found</h3>
+      <p style="color: var(--text-muted); max-width: 450px; margin: 0 auto 20px;">
+        Try refining your search keyword, selecting "All Elements", or clearing the festival filter.
+      </p>
+      <button type="button" class="btn btn-secondary" onclick="document.getElementById('browseSearchInput').value=''; document.querySelector('.filter-pill[data-category=\'All\']').click(); document.getElementById('festivalFilterSelect').value=''; document.getElementById('browseSearchInput').dispatchEvent(new Event('input'));">
+        Reset All Filters
+      </button>
+    </div>
+
+  </div>
+</section>
+{% endblock %}
